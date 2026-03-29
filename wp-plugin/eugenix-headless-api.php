@@ -73,29 +73,13 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
     }
 
     // --- 1. HERO ---
-    $raw_title = get_field( 'banner_title', $post_id );
-    
-    // Safely extract text before <strong> and inside <strong>
-    $heading_line1  = 'REGAIN YOUR HAIR';
-    $heading_strong = 'EUGENIX';
-
-    if ( $raw_title && preg_match( '/^(.*?)<strong>(.*?)<\/strong>/is', $raw_title, $matches ) ) {
-        // Keep everything before the <strong> tag, including "at"
-        $heading_line1  = trim( strip_tags( $matches[1] ) );
-        $heading_strong = trim( strip_tags( $matches[2] ) );
-    } elseif ( $raw_title ) {
-        // Fallback: simply split by <strong> instead of "at"
-        $title_parts = explode('<strong>', $raw_title);
-        $heading_line1  = trim(strip_tags($title_parts[0]));
-        $heading_strong = isset($title_parts[1]) ? trim(strip_tags($title_parts[1])) : 'EUGENIX';
-    }
-
     $hero = array(
-        'heading_line1'  => $heading_line1,
-        'heading_strong' => $heading_strong,
-        'description'    => get_field( 'banner_description', $post_id ),
-        'button_text'    => get_field( 'banner_button_label', $post_id ),
-        'banner_img'     => eugenix_resolve_image_url( get_field( 'banner_image', $post_id ) )
+        'subtitle'     => get_field( 'banner_subtitle', $post_id ),
+        'title'        => get_field( 'banner_title', $post_id ),
+        'description'  => get_field( 'banner_description', $post_id ),
+        'button_label' => get_field( 'banner_button_label', $post_id ),
+        'button_link'  => get_field( 'banner_button_link', $post_id ),
+        'image'        => eugenix_resolve_image_url( get_field( 'banner_image', $post_id ) )
     );
 
     // --- 2. STATS ---
@@ -112,8 +96,8 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
         }
     }
     $stats = array(
-        'section_title' => get_field( 'stats_section_title', $post_id ),
-        'items'         => $stats_list
+        'background_image' => eugenix_resolve_image_url( get_field( 'counter_section_background_image', $post_id ) ),
+        'items'            => $stats_list
     );
 
     // --- 3. VIDEOS (Dynamic from ACF) ---
@@ -136,24 +120,11 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
         }
     }
     
-    // Fallback if no videos found
-    if ( empty( $video_list ) ) {
-        $video_list = array(
-            array('id' => 'yJrn4hAnbGA'),
-            array('id' => 'BYmVrow0gO4'),
-            array('id' => '9iZFgP4BVrk'),
-            array('id' => 'RVxjp8TsmNk'),
-            array('id' => '8E2Ts-5jJ10'),
-            array('id' => 'lxSI8SOYhyU'),
-            array('id' => '61mY3cprtNQ'),
-            array('id' => 'O8gbyo_zwGg'),
-            array('id' => 'skOL7aNY5Xs')
-        );
-    }
-
     $videos = array(
-        'title' => get_field( 'video_testimonial_section_title', $post_id ),
-        'items' => $video_list
+        'title'        => get_field( 'video_testimonial_section_title', $post_id ),
+        'button_label' => get_field( 'video_testimonial_button_label', $post_id ),
+        'button_link'  => get_field( 'video_testimonial_button_link', $post_id ),
+        'items'        => $video_list
     );
 
     // --- 4. PROCEDURE ---
@@ -170,6 +141,8 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
     }
     $procedure = array(
         'section_title' => get_field( 'procedure_section_title', $post_id ),
+        'button_label'  => get_field( 'procedure_section_button_label', $post_id ),
+        'button_link'   => get_field( 'procedure_section_button_link', $post_id ),
         'items'         => $proc_list
     );
 
@@ -181,7 +154,7 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
             $serv_list[] = array(
                 'title'   => $item['service_title'],
                 'icon'    => eugenix_resolve_image_url( $item['service_icon'] ),
-                'img'     => eugenix_resolve_image_url( $item['service_image'] ),
+                'image'   => eugenix_resolve_image_url( $item['service_image'] ),
                 'content' => $item['service_content']
             );
         }
@@ -199,13 +172,15 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
             $doc_list[] = array(
                 'name'           => strip_tags( $item['team_member_name'] ),
                 'qualifications' => $item['team_member_qualification'],
-                'img'            => eugenix_resolve_image_url( $item['team_member_image'] )
+                'img'            => eugenix_resolve_image_url( $item['team_member_image'] ),
+                'button_label'   => $item['team_member_mobile_button_label'],
+                'button_link'    => $item['team_member_mobile_number']
             );
         }
     }
     $doctors = array(
-        'section_title' => get_field( 'doctors_section_title', $post_id ),
-        'description'   => get_field( 'doctors_section_description', $post_id ),
+        'section_title' => get_field( 'team_section_title', $post_id ),
+        'description'   => get_field( 'team_section_description', $post_id ),
         'items'         => $doc_list
     );
 
@@ -215,7 +190,6 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
     if ( $results_repeater ) {
         foreach ( $results_repeater as $item ) {
             $results_list[] = array(
-                'name'   => 'Patient Result',
                 'before' => eugenix_resolve_image_url( $item['results_beforeafter_image'] )
             );
         }
@@ -238,18 +212,18 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
         }
     }
     $text_testimonials = array(
-        'section_title' => get_field( 'text_testimonials_section_title', $post_id ),
+        'section_title' => get_field( 'testimonials_section_title', $post_id ),
         'items'         => $testimonials_list
     );
 
     // --- 9. CLINIC VIDEO ---
-    $clinic_content = get_field( 'clinic_video_section_content', $post_id );
-    $points = array_values( array_filter( array_map( 'trim', explode( "\n", strip_tags( $clinic_content ) ) ) ) );
-
     $clinic_video = array(
-        'url'     => eugenix_resolve_image_url( get_field( 'upload_clinic_video', $post_id ) ),
-        'heading' => get_field( 'clinic_video_section_title', $post_id ),
-        'points'  => $points
+        'video_type'  => get_field( 'clinic_video_option', $post_id ),
+        'url'         => eugenix_resolve_image_url( get_field( 'upload_clinic_video', $post_id ) ),
+        'iframe_link' => get_field( 'clinic_video_iframe_link', $post_id ),
+        'poster'      => eugenix_resolve_image_url( get_field( 'clinic_video_section_image', $post_id ) ),
+        'heading'     => get_field( 'clinic_video_section_title', $post_id ),
+        'content'     => get_field( 'clinic_video_section_content', $post_id )
     );
 
     // --- 11. MEDIA / FEATURED ON ---
@@ -325,6 +299,16 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
         'form_script'   => get_field( 'consultation_section_form_script', $post_id )
     );
 
+    // --- 16. CONTACT SECTION ---
+    $contact = array(
+        'contact_section_title' => get_field( 'contact_section_title', $post_id ),
+        'address_block'         => get_field( 'address_block', $post_id ),
+        'clinic_number'         => get_field( 'clinic_number', $post_id ),
+        'email'                 => get_field( 'email', $post_id ),
+        'working_hours'         => get_field( 'working_hours', $post_id ),
+        'map_iframe_link'       => get_field( 'map_iframe_link', $post_id ),
+    );
+
     // --- 10. GLOBAL CONFIG / OPTIONS ---
     $config = array(
         'header_logo'                => eugenix_resolve_image_url( get_option( 'options_header_logo' ) ),
@@ -338,26 +322,28 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
         'email'                      => get_option( 'options_email' ),
         'office_time'                => get_option( 'options_office_time' ),
         'office_address'             => get_option( 'options_office_address' ),
-        'social_media_section_title' => get_option( 'options_social_media_section_title' )
+        'social_media_section_title' => get_option( 'options_social_media_section_title' ),
+        'social_media'               => get_field( 'social_media', 'options' )
     );
     
     // Final Payload
     $response_data = array(
-        'config'          => $config,
-        'hero'            => $hero,
-        'stats'           => $stats,
-        'videos'          => $videos,
-        'procedure'       => $procedure,
-        'services'        => $services,
-        'doctors'         => $doctors,
-        'results'         => $results_section,
-        'textTestimonials'=> $text_testimonials,
-        'clinicVideo'     => $clinic_video,
-        'featuredOn'      => $featured_on,
-        'hairLossSolution'=> $hair_loss_solution,
-        'faq'             => $faq_section,
-        'endorsements'    => $endorsements,
-        'consultation'    => $consultation
+        'config'           => $config,
+        'hero'             => $hero,
+        'stats'            => $stats,
+        'videos'           => $videos,
+        'procedure'        => $procedure,
+        'services'         => $services,
+        'doctors'          => $doctors,
+        'results'          => $results_section,
+        'textTestimonials' => $text_testimonials,
+        'clinicVideo'      => $clinic_video,
+        'featuredOn'       => $featured_on,
+        'hairLossSolution' => $hair_loss_solution,
+        'faq'              => $faq_section,
+        'endorsements'     => $endorsements,
+        'consultation'     => $consultation,
+        'contact'          => $contact
     );
 
     return rest_ensure_response( $response_data );

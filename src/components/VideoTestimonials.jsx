@@ -1,79 +1,38 @@
 'use client';
 
 import React, { useState } from 'react';
-import Slider from 'react-slick';
-import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const VideoItem = ({ video, delay }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Determine video type (API provides object with url, generic JSON provides YouTube ID string)
+    const isMP4 = typeof video.id === 'object' && video.id !== null && video.id.url;
+    const videoUrl = isMP4 ? video.id.url : `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+    const thumbnailUrl = isMP4 ? '' : `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+
     return (
-        <div className="items wow fadeInLeft" data-wow-delay={delay}>
-            <div className="video-box" style={{ 
-                cursor: 'pointer', 
-                position: 'relative', 
-                width: '100%',
-                paddingBottom: '56.25%',
-                height: 0,
-                overflow: 'hidden',
-                backgroundColor: '#000',
-                borderRadius: '8px'
-            }}>
-                {!isLoaded ? (
-                    <div onClick={() => setIsLoaded(true)} className="video-placeholder" style={{ 
-                        position: 'absolute', 
-                        top: 0,
-                        left: 0,
-                        width: '100%', 
-                        height: '100%' 
-                    }}>
+        <div className={`col-lg-4 col-md-4 col-sm-12 col-xs-12 items wow fadeInLeft`} data-wow-delay={delay}>
+            <div className="video-box">
+                {isMP4 ? (
+                    <video 
+                        controls
+                        src={videoUrl}
+                        width="320"
+                        height="240"
+                    />
+                ) : !isLoaded ? (
+                    <div onClick={() => setIsLoaded(true)} className="video-placeholder" style={{ cursor: 'pointer', position: 'relative' }}>
                         <img 
-                            src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
+                            src={thumbnailUrl} 
                             alt="YouTube Video Thumbnail" 
-                            style={{ 
-                                width: '100%', 
-                                height: '100%', 
-                                objectFit: 'cover',
-                                display: 'block' 
-                            }}
+                            style={{ width: '100%', display: 'block' }}
                         />
-                        <div className="play-button" style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: '60px',
-                            height: '42px',
-                            backgroundColor: 'rgba(255, 0, 0, 0.9)',
-                            borderRadius: '8px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            fontSize: '20px',
-                            transition: 'background-color 0.3s'
-                        }}>
-                            <i className="la la-play"></i>
-                        </div>
+                        <a className="play-btn video-btn">
+                            <i className="las la-play-circle"></i>
+                        </a>
                     </div>
                 ) : (
-                    <iframe
-                        width="560"
-                        height="315"
-                        src={video.src}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                        style={{ 
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%', 
-                            height: '100%' 
-                        }}
-                    ></iframe>
+                    <div dangerouslySetInnerHTML={{ __html: `<iframe width="560" height="315" src="${videoUrl}" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>` }} />
                 )}
             </div>
         </div>
@@ -81,59 +40,36 @@ const VideoItem = ({ video, delay }) => {
 };
 
 const VideoTestimonials = ({ data }) => {
-    const { mounted, slidesToShow } = useResponsiveSlider(
-        [
-            { breakpoint: 1024, slidesToShow: 2 },
-            { breakpoint: 768, slidesToShow: 1 },
-        ],
-        3
-    );
-
     // Support both new structured data and old array fallback
     const videoList = data?.items || (Array.isArray(data) ? data : []);
-    const sectionTitle = data?.title || "Watch Videos";
-
-    const settings = {
-        infinite: videoList.length > slidesToShow,
-        dots: false,
-        arrows: true,
-        slidesToShow,
-        slidesToScroll: 1,
-        autoplay: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: { slidesToShow: 2, slidesToScroll: 1 }
-            },
-            {
-                breakpoint: 768,
-                settings: { slidesToShow: 1, slidesToScroll: 1, dots: true, arrows: false }
-            }
-        ]
-    };
-
-    if (!mounted) return null;
+    const sectionTitle = data?.title || data?.section_title || "Watch Videos";
+    const buttonLabel = data?.button_label;
+    const buttonLink = data?.button_link || "#";
 
     return (
-        <section className="journey-section results-section results-section-video video-landing-page ptb-60">
+        <section className="journey-section results-section ptb-60">
             <div className="container relative">
                 <div className="block-title text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <div className="small-title uppercase" style={{ color: '#800040', fontWeight: 'normal', fontSize: '22px' }}>{sectionTitle}</div>
+                    <h2 dangerouslySetInnerHTML={{ __html: sectionTitle }} />
                 </div>
 
-                <Slider {...settings} className="video-test-list video-test-list-slider ptb-20 px-2 md:px-0">
-                    {videoList.map((video, idx) => {
-                        const videoWithSrc = { ...video, src: `https://www.youtube.com/embed/${video.id}?autoplay=1` };
-                        return (
-                            <div key={idx} className="px-2">
-                                <VideoItem 
-                                    video={videoWithSrc} 
-                                    delay={`${0.1 * ((idx % 3) + 1)}s`} 
-                                />
-                            </div>
-                        );
-                    })}
-                </Slider>
+                <div className="row video-test-list ptb-20">
+                    {videoList.map((video, idx) => (
+                        <VideoItem 
+                            key={idx}
+                            video={video} 
+                            delay={`${0.1 * ((idx % 3) + 1)}s`} 
+                        />
+                    ))}
+                </div>
+
+                {buttonLabel && (
+                    <div className="bottom-btnbox text-center ptb-20 pb-0">
+                        <a className="btn primary" href={buttonLink}>
+                            <span>{buttonLabel} <i className="las la-arrow-right"></i></span>
+                        </a>
+                    </div>
+                )}
             </div>
         </section>
     );

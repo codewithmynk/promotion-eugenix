@@ -1,254 +1,339 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 
+  Global overides and Next.js specific layout resets 
+  Note: This project relies on the original WP theme CSS (main.css, bootstrap.css)
+*/
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-white text-gray-900;
+  background-color: #fff;
+  color: #111827;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hero Custom Desktop Image Sizing */
-@media (min-width: 769px) {
-  .hero-desktop-img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 90vh !important;
-    object-fit: contain !important;
-    transform: none !important;
-    transform-origin: bottom center !important;
-    min-width: 700px !important;
-    position: relative !important;
-    z-index: 5 !important;
-  }
+/* Global Container Width - Match Theme (main.css:245) */
+.container {
+  max-width: 1260px !important;
+  margin: 0 auto !important;
 }
 
+/* Slick Carousel overrides for Next.js */
+.slick-dots {
+  bottom: -30px !important;
+  display: block !important;
+  position: relative !important;
+  margin-top: 15px !important;
+}
 
-/* Mobile Responsiveness Overrides */
-@media (max-width: 768px) {
-  /* Move Slick arrows to avoid overlapping content */
-  .slick-prev, .slick-next {
-    top: auto !important;
-    bottom: -35px !important;
-    transform: none !important;
-    width: 30px !important;
-    height: 30px !important;
-    z-index: 10 !important;
-  }
-  
-  .slick-prev {
-    left: calc(50% - 40px) !important;
-  }
-  
-  .slick-next {
-    right: calc(50% - 40px) !important;
-  }
+.slick-dots li {
+  margin: 0 3px !important;
+  width: 12px !important;
+  height: 12px !important;
+}
 
-  .slick-prev:before, .slick-next:before {
-    font-size: 24px !important;
-    color: #63153c !important; /* Brand color */
-  }
+.slick-dots li button:before {
+  color: #63153c !important;
+  font-size: 8px !important;
+  opacity: 0.5 !important;
+  width: 12px !important;
+  height: 12px !important;
+  line-height: 12px !important;
+}
 
-  /* Add spacing for sliders with arrows at bottom */
-  .slick-slider {
-    margin-bottom: 50px !important;
-    width: 100% !important;
-  }
+.slick-dots li.slick-active button:before {
+  color: #63153c !important;
+  opacity: 1 !important;
+}
 
-  .slick-list {
-    overflow: hidden !important;
-  }
-
-
-  /* Hero Section Mobile Order Fixes */
-  .home-banner .hero-slider .items {
-    display: flex !important;
-    flex-direction: column !important;
-    padding-top: 80px !important;
-  }
-  
-  .home-banner .items > .caption-imgbox {
-    order: 1 !important;
-    position: relative !important;
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    z-index: 1 !important;
+/* Hero Section Adjustments - Parity with Theme (main.css:406) */
+@media (min-width: 992px) {
+  .home-banner .items {
+    height: 100vh !important;
+    min-height: 640px !important;
+    max-height: 740px !important;
+    /* Reverting from 800px to match WP */
+    padding: 80px 0 0 !important;
   }
 
-  .home-banner .items > .caption-imgbox img {
-    max-height: 55vh !important;
-    width: 100% !important;
-    max-width: 500px !important;
-    object-fit: contain !important;
-    transform: scale(1.1) translateY(5%) !important;
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
-  }
-  
-  .home-banner .items > .container {
-    order: 2 !important;
-    position: relative !important;
-    z-index: 10 !important;
-    margin-top: -60px !important;
-    padding: 0 15px !important;
-  }
-  
-  .hero-caption {
-    background-color: #1a1a1c !important;
-    padding: 30px 20px !important;
-    border-radius: 20px !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
-    text-align: center !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
-  }
-
-  .hero-caption .btnbox {
-    justify-content: center !important;
-    margin-top: 25px !important;
-  }
-
-  .hero-caption h1 {
-    font-size: 28px !important;
-    line-height: 1.2 !important;
-  }
-
-  .hero-caption p {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    margin-top: 20px !important;
-    letter-spacing: 0.01em !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-  }
-
-  /* Custom File Input Styling */
-  .consult-form input[type="file"] {
-    position: relative;
-    padding: 10px !important;
-    background: #f8f9fa;
-    border: 2px dashed #63153c;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .consult-form input[type="file"]::file-selector-button {
-    background: #63153c;
-    color: white;
-    padding: 6px 15px;
-    border: none;
-    border-radius: 4px;
-    margin-right: 10px;
-    font-weight: 600;
-  }
-
-  /* Header Spacing */
-  .site-header {
-    padding: 8px 0 !important;
-  }
-
-  .site-logo img {
-    max-width: 140px !important;
-  }
-  
-  /* General Section Spacing */
-  .ptb-60 {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-
-  /* Hard Overrides for Mobile Utility */
-  .mobile-force-col {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .mobile-force-col .items {
-    width: 100% !important;
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-    padding: 10px 0 !important;
-  }
-
-  .card-counter {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .card-counter .iconbox {
-    margin: 0 0 15px 0 !important;
-  }
-
-  .counter-list .items {
-    padding: 0 15px !important;
-    width: 100% !important;
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-  }
-
-  .counter-list .textbox strong {
-    justify-content: center !important;
-    display: flex !important;
-  }
-
-  /* Sliders Dots Styling */
-  .slick-dots {
-    bottom: -30px !important;
-    display: block !important;
-    position: relative !important;
-    margin-top: 15px !important;
-  }
-
-  .slick-dots li {
-    margin: 0 3px !important;
-    width: 12px !important;
-    height: 12px !important;
-  }
-
-  .slick-dots li button:before {
-    color: #63153c !important;
-    font-size: 8px !important;
-    opacity: 0.5 !important;
-    width: 12px !important;
-    height: 12px !important;
-    line-height: 12px !important;
-  }
-
-  .slick-dots li.slick-active button:before {
-    color: #63153c !important;
-    opacity: 1 !important;
-  }
-
-  /* Footer Utility */
-  .address-block-inner a {
-    color: #63153c !important; /* Make links burgundy so they look clickable */
-    text-decoration: underline !important;
-    display: block !important;
-    margin-bottom: 5px !important;
-  }
-
-  .address-block-inner a:hover {
-    color: #000 !important;
-  }
-
-  .address-block-inner .cont-items {
+  .hero-caption .h1 {
+    font-size: 66px !important;
+    /* Theme original */
+    line-height: 1.1 !important;
     margin-bottom: 25px !important;
   }
+}
 
-
-  /* Procedure Stacking Override */
-  .procedure-slider .items {
-    width: 100% !important;
-    padding: 0 10px !important;
+/* Mobile Hero Reordering: Image First */
+@media screen and (max-width: 767px) {
+  .home-banner .items {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
   }
+
+  .home-banner .items>.container {
+    order: 2 !important;
+  }
+
+  .home-banner .items>.caption-imgbox {
+    order: 1 !important;
+    margin-bottom: 0px !important;
+    max-width: 240px !important;
+    /* Restored to theme's original size */
+    padding-top: 20px !important;
+    /* Match theme's padding */
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .home-banner .items>.caption-imgbox img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .home-banner .items>.container {
+    order: 2 !important;
+    padding: 0 10px !important;
+    margin-top: 0 !important;
+    /* Start section after image end, no overlap */
+    z-index: 2 !important;
+    position: relative !important;
+  }
+
+  .hero-caption {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    width: 95% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 30px 20px !important;
+    /* Back to original theme padding */
+    border-radius: 10px !important;
+  }
+
+  .hero-caption .h1 {
+    color: #fff !important;
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 15px !important;
+    display: block !important;
+  }
+
+  .hero-caption .h1 strong {
+    color: #800040 !important;
+  }
+}
+
+/* "As Seen On" Slider Arrows Positioning */
+.media-slider {
+  overflow: visible !important;
+  padding: 0 45px !important;
+  display: block !important;
+}
+
+.media-slider .slick-arrow {
+  background: none !important;
+  border: 0 !important;
+  color: #999 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  z-index: 5 !important;
+  font-size: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1 !important;
+}
+
+.media-slider .slick-arrow.slick-prev {
+  left: 0px !important;
+}
+
+.media-slider .slick-arrow.slick-next {
+  right: 0px !important;
+}
+
+.media-slider .slick-arrow:before {
+  content: "\f104" !important;
+  font-family: 'Line Awesome Free' !important;
+  font-weight: 900 !important;
+  font-size: 36px !important;
+  display: block !important;
+}
+
+.media-slider .slick-arrow.slick-next:before {
+  content: "\f105" !important;
+}
+
+.media-slider .slick-arrow:hover {
+  color: #800040 !important;
+}
+
+.card-media {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 80px !important;
+}
+
+/* Results Section Custom Arrows */
+.results-custom-arrows {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 30px !important;
+  margin-top: 30px !important;
+}
+
+@media screen and (max-width: 991px) {
+  .results-custom-arrows {
+    display: none !important;
+  }
+}
+
+.custom-arrow {
+  background: none !important;
+  border: 0 !important;
+  color: #800040 !important;
+  font-size: 24px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  padding: 10px !important;
+}
+
+.custom-arrow:hover {
+  transform: scale(1.2) !important;
+  opacity: 0.8 !important;
+}
+
+.card-result h4 {
+  font-style: italic !important;
+  font-weight: 300 !important;
+  color: #666 !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  padding: 10px 0 !important;
+}
+
+.card-result h4 span {
+  width: auto !important;
+  padding: 0 15px !important;
+}
+
+
+/* Hair Transplant Services Tab Styles (100% Theme Parity) */
+.service-section {
+  overflow: hidden !important;
+}
+
+.service-tab-block::before {
+  display: block !important;
+  content: "" !important;
+  background: #fff !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 50% !important;
+  z-index: 1 !important;
+}
+
+.service-list-tab {
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 3 !important;
+  position: relative !important;
+}
+
+.service-list-tab .items {
+  padding: 10px 10px 15px !important;
+}
+
+.card-serv-icon {
+  padding: 10px 10px 15px !important;
+  text-align: center !important;
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+  position: relative !important;
+  border-radius: 10px !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+  height: 100% !important;
+  min-height: 140px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.4s ease 0s !important;
+}
+
+.card-serv-icon::after {
+  display: block !important;
+  content: "" !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: #800040 !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -10px !important;
+  margin: auto !important;
+  transform: rotate(45deg) !important;
+  z-index: 1 !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease 0s !important;
+}
+
+.slick-current .card-serv-icon::after {
+  opacity: 1 !important;
+}
+
+.slick-current .card-serv-icon {
+  color: #fff !important;
+  border-color: #800040 !important;
+  background: #800040 !important;
+}
+
+.service-list-tab .iconbox {
+  padding: 5px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 64px !important;
+  max-width: 64px !important;
+  height: 64px !important;
+  background: #fff !important;
+  border-radius: 50% !important;
+  margin: 0 auto 10px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.service-list-tab .iconbox img {
+  max-width: 40px !important;
+  height: auto !important;
+}
+
+.tab-tl {
+  display: block !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  font-weight: 500 !important;
+  color: inherit !important;
+}
+
+.slick-current .tab-tl {
+  color: #fff !important;
 }
 
 /* Tablet Adjustments */
@@ -256,7 +341,666 @@ body {
   .slick-prev {
     left: -15px !important;
   }
+
   .slick-next {
     right: -15px !important;
   }
+}
+
+/* Hair Transplant Process (Procedure) Section Styles */
+.procedure-section {
+  overflow: hidden !important;
+  background: #fdfdfd !important;
+}
+
+.procedure-list {
+  counter-reset: li-counter !important;
+  display: block !important;
+}
+
+.procedure-list .items {
+  padding: 15px !important;
+}
+
+.card-procedure {
+  padding: 40px 20px !important;
+  position: relative !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fff !important;
+  border: 1px solid #E8E8E8 !important;
+  border-radius: 10px !important;
+  height: 100% !important;
+  transition: all 0.4s ease 0s !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+.card-procedure::after {
+  display: block !important;
+  content: "" !important;
+  width: 40px !important;
+  height: 2px !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 20px !important;
+  margin: auto !important;
+  background: #800040 !important;
+  transition: all 0.4s ease 0s !important;
+}
+
+/* Even item highlight: Blue */
+.procedure-slider .slick-slide:nth-child(even) .card-procedure::after {
+  background: #474AFF !important;
+}
+
+.card-procedure:hover::after {
+  width: 80px !important;
+}
+
+.card-procedure:hover {
+  background: rgba(128, 0, 64, 0.03) !important;
+  transform: translateY(-5px) !important;
+}
+
+.procedure-slider .slick-slide:nth-child(even) .card-procedure:hover {
+  background: rgba(71, 74, 255, 0.03) !important;
+}
+
+.card-procedure h4 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin: 15px 0 10px !important;
+  color: #333 !important;
+}
+
+.card-procedure div p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #666 !important;
+}
+
+.card-procedure .iconbox {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  margin: 0 auto 20px !important;
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  box-shadow: 0px 5px 15px rgba(128, 0, 64, 0.3) !important;
+  transition: all 0.4s ease 0s !important;
+  background: linear-gradient(to bottom, #800040 0%, #ab800040 100%) !important;
+}
+
+/* Alternative color for even steps */
+.procedure-slider .slick-slide:nth-child(even) .card-procedure .iconbox {
+  background: linear-gradient(180deg, #474AFF 0.36%, rgba(71, 74, 255, 0.5) 99.6%) !important;
+  box-shadow: 0px 5px 15px rgba(71, 74, 255, 0.3) !important;
+}
+
+.card-procedure .iconbox img {
+  max-width: 50% !important;
+  height: auto !important;
+  filter: brightness(0) invert(1) !important;
+  /* Ensure icons are white */
+}
+
+/* Automatic Numbering */
+.card-procedure .iconbox::before {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #800040 !important;
+  border: 3px solid #fff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  right: -5px !important;
+  top: -5px !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  content: counter(li-counter) !important;
+  counter-increment: li-counter !important;
+  z-index: 2 !important;
+}
+
+.procedure-slider .slick-slide:nth-child(even) .card-procedure .iconbox::before {
+  background: #474AFF !important;
+}
+
+/* Circular Slider Arrows */
+.procedure-slider .slick-arrow {
+  width: 50px !important;
+  height: 50px !important;
+  background: #f8f8f8 !important;
+  border-radius: 50% !important;
+  z-index: 10 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.procedure-slider .slick-arrow:hover {
+  background: #fff !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+.procedure-slider .slick-arrow::before {
+  color: #800040 !important;
+  /* Maroon arrow color */
+  font-size: 24px !important;
+  opacity: 1 !important;
+  font-family: 'Line Awesome Free' !important;
+  /* Correct font family */
+  font-weight: 900 !important;
+  /* Required for Line Awesome Free */
+  display: block !important;
+  line-height: 1 !important;
+}
+
+.procedure-slider .slick-prev::before {
+  content: "\f104" !important;
+  /* la-angle-left */
+}
+
+.procedure-slider .slick-next::before {
+  content: "\f105" !important;
+  /* la-angle-right */
+}
+
+.procedure-slider .slick-prev {
+  left: -25px !important;
+}
+
+.procedure-slider .slick-next {
+  right: -25px !important;
+}
+
+/* Doctors (Team) Section Design Parity */
+.team-section {
+  overflow: hidden !important;
+}
+
+.team-list {
+  justify-content: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.card-team {
+  position: relative !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  padding: 20px 10px !important;
+}
+
+.card-team .imgbox {
+  display: block !important;
+  width: 300px !important;
+  height: 300px !important;
+  margin: 0 auto 20px !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+  border: 10px solid #fff !important;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-team .imgbox img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-team h4 {
+  font-weight: 700 !important;
+  color: #800040 !important;
+  font-size: 24px !important;
+  margin-bottom: 5px !important;
+}
+
+.card-team p {
+  color: #555 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.appointment-button {
+  padding-left: 60px !important;
+  /* Space for the absolute icon box */
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  overflow: hidden !important;
+  margin-top: 15px !important;
+  background: #800040 !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+}
+
+.appointment-button i {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  /* Darker overlay for icon */
+  margin: 0 !important;
+  font-size: 24px !important;
+}
+
+.appointment-button span {
+  padding: 10px 15px !important;
+  font-weight: 600 !important;
+}
+
+.expert-block {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  height: 100% !important;
+}
+
+@media screen and (max-width: 991px) {
+  .card-team .imgbox {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .team-list .left-block {
+    text-align: center !important;
+    margin-bottom: 30px !important;
+  }
+}
+
+/* Testimonials Section Redesign */
+.testimonial-section {
+  background: #800040 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-section .sigma_dots {
+  position: absolute !important;
+  top: 50% !important;
+  right: -50px !important;
+  transform: translateY(-50%) !important;
+  width: 300px !important;
+  height: 150px !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  pointer-events: none !important;
+}
+
+.card-testi {
+  background: #fff !important;
+  padding: 40px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  margin: 15px !important;
+  height: calc(100% - 30px) !important;
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+.quote-icon {
+  margin-bottom: 25px !important;
+  opacity: 1 !important;
+}
+
+.testimonial-text {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #333 !important;
+  flex-grow: 1 !important;
+}
+
+.client-info {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  margin-top: auto !important;
+  padding-bottom: 15px !important;
+  position: relative !important;
+}
+
+.client-name-wrapper {
+  position: relative !important;
+}
+
+.client-name-wrapper:after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: -10px !important;
+  width: 50px !important;
+  height: 2px !important;
+  background: #800040 !important;
+}
+
+.client-name {
+  font-size: 18px !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+.star-box i {
+  color: #800040 !important;
+  font-size: 20px !important;
+  margin-left: 2px !important;
+}
+
+.star-box i:not(.checked) {
+  opacity: 0.2 !important;
+}
+
+/* Custom Arrows positioning */
+.testimonial-slider .slick-arrow {
+  position: absolute !important;
+  top: -85px !important;
+  width: 45px !important;
+  height: 45px !important;
+  background: #fff !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.testimonial-slider .slick-arrow i {
+  color: #800040 !important;
+  font-size: 20px !important;
+}
+
+.testimonial-slider .slick-arrow:hover {
+  background: #f8f8f8 !important;
+  transform: scale(1.05) !important;
+}
+
+.testimonial-slider .slick-prev {
+  right: 65px !important;
+  left: auto !important;
+}
+
+.testimonial-slider .slick-next {
+  right: 15px !important;
+  left: auto !important;
+}
+
+.testimonial-slider .slick-prev:before,
+.testimonial-slider .slick-next:before {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .testimonial-slider .slick-arrow {
+    top: -75px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonial-section {
+    padding-bottom: 90px !important;
+  }
+
+  .testimonial-slider .slick-arrow {
+    top: auto !important;
+    bottom: -60px !important;
+    left: 50% !important;
+    right: auto !important;
+    width: 40px !important;
+    height: 40px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .testimonial-slider .slick-prev {
+    margin-left: -25px !important;
+  }
+
+  .testimonial-slider .slick-next {
+    margin-left: 25px !important;
+  }
+
+  .card-testi {
+    padding: 25px !important;
+  }
+}
+
+/* Endorsements Section Fixes */
+.endorsement-section .small-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #800040 !important;
+  gap: 20px !important;
+}
+
+.endorsement-section .small-title:before,
+.endorsement-section .small-title:after {
+  content: "" !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: linear-gradient(to right, transparent, #800040 50%, transparent) !important;
+  max-width: 300px !important;
+}
+
+.endorsement-section .items {
+  padding: 0 5px !important;
+  /* Tighten spacing */
+}
+
+.crad-endors {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.crad-endors .imgbox {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 80px !important;
+  padding: 10px !important;
+}
+
+.crad-endors .imgbox img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* Endorsement Slider Arrows */
+.endorsement-section .slick-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: transparent !important;
+  display: none !important;
+  /* Hidden on desktop */
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+  border: none !important;
+}
+
+.endorsement-section .slick-arrow i {
+  color: #999 !important;
+  font-size: 30px !important;
+}
+
+.endorsement-section .slick-prev {
+  left: -25px !important;
+}
+
+.endorsement-section .slick-next {
+  right: -25px !important;
+}
+
+.endorsement-section .slick-prev:before,
+.endorsement-section .slick-next:before {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .endorsement-section .small-title {
+    font-size: 20px !important;
+  }
+
+  .endorsement-section .small-title:before,
+  .endorsement-section .small-title:after {
+    display: none !important;
+  }
+
+  .endorsement-section .slick-arrow {
+    display: flex !important;
+    /* Show on mobile */
+  }
+
+  .endorsement-section .container {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+/* Floating Actions & Sticky Elements */
+
+.whatsapp-float {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 999;
+}
+
+.whatsapp-float .btn-whatsapp {
+  background-color: #25d366;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float .btn-whatsapp:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.scrollup {
+  position: fixed;
+  right: -50px;
+  /* Initially hidden */
+  bottom: 20px;
+  z-index: 998;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #820000;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.scrollup.active {
+  right: 20px;
+  opacity: 1;
+}
+
+.scrollup:hover {
+  background: #820000;
+  color: #fff;
+  border-color: #820000;
+}
+
+/* Sticky Mobile CTA */
+.book-consult-btnbox {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100px;
+  /* Initially hidden below screen */
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transition: bottom 0.4s ease;
+  display: none;
+  /* Hidden by default */
+}
+
+/* Only show on mobile */
+@media (max-width: 767px) {
+  .book-consult-btnbox {
+    display: block;
+  }
+
+  .book-consult-btnbox.darkHeader {
+    bottom: 0;
+  }
+
+  /* Adjust floating buttons when sticky footer is visible to avoid overlap */
+  .book-consult-btnbox.darkHeader~.whatsapp-float,
+  .book-consult-btnbox.darkHeader~.scrollup {
+    bottom: 70px;
+  }
+
+  /* If they are not siblings in the DOM, let's use a simpler approach in JSX or just fixed bottom values */
+}
+
+.book-consult-btnbox .btn {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/* Ensure these are above everything */
+body.darkHeader-sticky .scrollup,
+body.darkHeader-sticky .whatsapp-float {
+  bottom: 70px !important;
 }

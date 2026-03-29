@@ -1,9 +1,5 @@
 import { Poppins } from "next/font/google";
-import "../assets/css/bootstrap.min.css";
-import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../assets/css/main.css";
+import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({ 
@@ -20,7 +16,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <head>
+        {/* Load theme CSS via <link> exactly as the WP theme enqueues them */}
+        <link rel="stylesheet" href="/bhubaneswar/react/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/bhubaneswar/react/assets/css/line-awesome.min.css" />
+        <link rel="stylesheet" href="/bhubaneswar/react/assets/css/main.css" />
+      </head>
+      <body className={poppins.className}>
+        {children}
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" strategy="lazyOnload" />
+        <Script id="wow-init" strategy="lazyOnload">
+          {`
+            setTimeout(() => {
+              if (typeof WOW !== 'undefined') {
+                new WOW({ offset: 100, mobile: true, live: true }).init();
+              }
+            }, 1000);
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

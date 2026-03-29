@@ -23,37 +23,6 @@ const LOGOS = [
     { name: 'Brut', url: brutLogo }
 ];
 
-const CustomNextArrow = (props) => {
-    const { onClick } = props;
-    return (
-        <div
-            className="custom-seen-arrow custom-seen-next"
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", position: "absolute", top: "50%", transform: "translateY(-50%)", right: "0px", zIndex: 10, width: '40px', height: '40px' }}
-            onClick={onClick}
-        >
-            <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px', height: '30px', cursor: 'pointer' }}>
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </div>
-    );
-};
-
-const CustomPrevArrow = (props) => {
-    const { onClick } = props;
-    return (
-        <div
-            className="custom-seen-arrow custom-seen-prev"
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", position: "absolute", top: "50%", transform: "translateY(-50%)", left: "0px", zIndex: 10, width: '40px', height: '40px' }}
-            onClick={onClick}
-        >
-            <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px', height: '30px', cursor: 'pointer' }}>
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-        </div>
-    );
-};
-
-
 const FeaturedOn = ({ data }) => {
     const { mounted, slidesToShow } = useResponsiveSlider(
         [
@@ -72,8 +41,6 @@ const FeaturedOn = ({ data }) => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        nextArrow: <CustomNextArrow />,
-        prevArrow: <CustomPrevArrow />,
         arrows: true,
         responsive: [
             {
@@ -103,34 +70,25 @@ const FeaturedOn = ({ data }) => {
         <section className="media-section ptb-30 bg4">
             <div className="container">
                 <div className="block-title text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <div className="small-title uppercase" style={{ color: '#800040', fontWeight: 'normal', fontSize: '22px', lineHeight: '30px', letterSpacing: '0', marginBottom: '0px' }}>{sectionTitle}</div>
+                    <div className="small-title">{sectionTitle}</div>
                 </div>
 
-                <Slider {...settings} className="media-list media-slider wow fadeInUp px-8 md:px-12" data-wow-delay="0.3s">
+                <Slider {...settings} className="media-list media-slider wow fadeInUp" data-wow-delay="0.3s">
                     {displayLogos.map((logo, index) => (
-                        <div key={index} className="px-2">
-                            <div className="imgbox card-media flex items-center justify-center p-2 md:p-4 min-h-[60px] md:min-h-[80px]">
+                        <div key={index} className="items">
+                            <a className="card-media" href="#" target="_blank" rel="noopener noreferrer">
                                 <Image 
                                     src={logo.url} 
                                     alt={logo.name} 
                                     width={200}
-                                    height={50}
-                                    className="max-h-[40px] md:max-h-[50px] w-auto object-contain"
+                                    height={80}
+                                    style={{ height: 'auto', width: 'auto', maxWidth: '160px', maxHeight: '80px' }}
                                 />
-                            </div>
+                            </a>
                         </div>
                     ))}
                 </Slider>
             </div>
-            {/* Global style for hiding default slick arrow content specifically here */}
-            <style dangerouslySetInnerHTML={{__html: `
-                .custom-seen-arrow::before {
-                    display: none !important;
-                }
-                .custom-seen-arrow svg:hover {
-                    stroke: #666;
-                }
-            `}} />
         </section>
     );
 };

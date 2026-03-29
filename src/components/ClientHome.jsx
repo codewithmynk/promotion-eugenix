@@ -11,8 +11,7 @@ import Services from './Services';
 import Procedure from './Procedure';
 import Stats from './Stats';
 import Doctors from './Doctors';
-import TextTestimonials from './TextTestimonials';
-import Endorsements from './Endorsements';
+import Contact from './Contact';
 import Footer from './Footer';
 
 // Defer heavy components that require browser APIs
@@ -24,13 +23,39 @@ const VideoTestimonials = dynamic(() => import('./VideoTestimonials'), {
     ssr: false,
     loading: () => <div className="p-10 text-center">Loading Videos...</div>
 });
+const TextTestimonials = dynamic(() => import('./TextTestimonials'), { ssr: false });
 const FAQ = dynamic(() => import('./FAQ'), { ssr: false });
 const ConsultationForm = dynamic(() => import('./ConsultationForm'), { ssr: false });
+const Endorsements = dynamic(() => import('./Endorsements'), { ssr: false });
 
-import landingPageData from '../data/landing-page.json';
+import FloatingActions from './FloatingActions';
 
 export default function ClientHome({ initialData }) {
   const [pageData, setPageData] = useState(initialData || null);
+
+  const [lastScrollY, setLastScrollY] = useState(0);
+  useEffect(() => {
+    const handleGlobalScroll = () => {
+      const scrollY = window.scrollY;
+      if (typeof document !== 'undefined') {
+        // Only add sticky class if scrolling UP and past 700px
+        if (scrollY > 700 && scrollY < lastScrollY) {
+          document.body.classList.add('darkHeader-sticky');
+        } else {
+          document.body.classList.remove('darkHeader-sticky');
+        }
+      }
+      setLastScrollY(scrollY);
+    };
+
+    window.addEventListener('scroll', handleGlobalScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleGlobalScroll);
+      if (typeof document !== 'undefined') {
+        document.body.classList.remove('darkHeader-sticky');
+      }
+    };
+  }, [lastScrollY]);
 
   useEffect(() => {
     // If the Server Component provided the data (SSG), no need to fetch it again on mount!
@@ -75,9 +100,6 @@ export default function ClientHome({ initialData }) {
     fetchPageData();
   }, []);
 
-  // Fallback logic
-
-
   const safeData = pageData || {};
 
   return (
@@ -96,10 +118,12 @@ export default function ClientHome({ initialData }) {
         <VideoTestimonials data={safeData.videos} />
         <TextTestimonials data={safeData.textTestimonials} />
         <FAQ data={safeData.faq} />
+        <Contact data={safeData.contact || safeData.config} />
         <ConsultationForm data={safeData.consultation} />
         <Endorsements data={safeData.endorsements} />
       </main>
       <Footer data={safeData.config} />
+      <FloatingActions config={safeData.config} />
     </>
   );
 }
