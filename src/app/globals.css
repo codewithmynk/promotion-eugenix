@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-900;
+  overflow-x: hidden;
+}
+
+/* Hero Custom Desktop Image Sizing */
+@media (min-width: 769px) {
+  .hero-desktop-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    object-fit: contain !important;
+    transform: none !important;
+    transform-origin: bottom center !important;
+    min-width: 700px !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+}
+
+
+/* Mobile Responsiveness Overrides */
+@media (max-width: 768px) {
+  /* Move Slick arrows to avoid overlapping content */
+  .slick-prev, .slick-next {
+    top: auto !important;
+    bottom: -35px !important;
+    transform: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    z-index: 10 !important;
+  }
+  
+  .slick-prev {
+    left: calc(50% - 40px) !important;
+  }
+  
+  .slick-next {
+    right: calc(50% - 40px) !important;
+  }
+
+  .slick-prev:before, .slick-next:before {
+    font-size: 24px !important;
+    color: #63153c !important; /* Brand color */
+  }
+
+  /* Add spacing for sliders with arrows at bottom */
+  .slick-slider {
+    margin-bottom: 50px !important;
+    width: 100% !important;
+  }
+
+  .slick-list {
+    overflow: hidden !important;
+  }
+
+
+  /* Hero Section Mobile Order Fixes */
+  .home-banner .hero-slider .items {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 80px !important;
+  }
+  
+  .home-banner .items > .caption-imgbox {
+    order: 1 !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .home-banner .items > .caption-imgbox img {
+    max-height: 55vh !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    object-fit: contain !important;
+    transform: scale(1.1) translateY(5%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
+  }
+  
+  .home-banner .items > .container {
+    order: 2 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    margin-top: -60px !important;
+    padding: 0 15px !important;
+  }
+  
+  .hero-caption {
+    background-color: #1a1a1c !important;
+    padding: 30px 20px !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    text-align: center !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+  }
+
+  .hero-caption .btnbox {
+    justify-content: center !important;
+    margin-top: 25px !important;
+  }
+
+  .hero-caption h1 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-caption p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-top: 20px !important;
+    letter-spacing: 0.01em !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Custom File Input Styling */
+  .consult-form input[type="file"] {
+    position: relative;
+    padding: 10px !important;
+    background: #f8f9fa;
+    border: 2px dashed #63153c;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .consult-form input[type="file"]::file-selector-button {
+    background: #63153c;
+    color: white;
+    padding: 6px 15px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: 600;
+  }
+
+  /* Header Spacing */
+  .site-header {
+    padding: 8px 0 !important;
+  }
+
+  .site-logo img {
+    max-width: 140px !important;
+  }
+  
+  /* General Section Spacing */
+  .ptb-60 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Hard Overrides for Mobile Utility */
+  .mobile-force-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .mobile-force-col .items {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 !important;
+  }
+
+  .card-counter {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .card-counter .iconbox {
+    margin: 0 0 15px 0 !important;
+  }
+
+  .counter-list .items {
+    padding: 0 15px !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .counter-list .textbox strong {
+    justify-content: center !important;
+    display: flex !important;
+  }
+
+  /* Sliders Dots Styling */
+  .slick-dots {
+    bottom: -30px !important;
+    display: block !important;
+    position: relative !important;
+    margin-top: 15px !important;
+  }
+
+  .slick-dots li {
+    margin: 0 3px !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .slick-dots li button:before {
+    color: #63153c !important;
+    font-size: 8px !important;
+    opacity: 0.5 !important;
+    width: 12px !important;
+    height: 12px !important;
+    line-height: 12px !important;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #63153c !important;
+    opacity: 1 !important;
+  }
+
+  /* Footer Utility */
+  .address-block-inner a {
+    color: #63153c !important; /* Make links burgundy so they look clickable */
+    text-decoration: underline !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+  }
+
+  .address-block-inner a:hover {
+    color: #000 !important;
+  }
+
+  .address-block-inner .cont-items {
+    margin-bottom: 25px !important;
+  }
+
+
+  /* Procedure Stacking Override */
+  .procedure-slider .items {
+    width: 100% !important;
+    padding: 0 10px !important;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .slick-prev {
+    left: -15px !important;
+  }
+  .slick-next {
+    right: -15px !important;
+  }
+}

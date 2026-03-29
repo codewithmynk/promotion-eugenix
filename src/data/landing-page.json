@@ -1,0 +1,174 @@
+{
+  "hero": {
+    "heading_line1": "REGAIN YOUR HAIR",
+    "heading_strong": "EUGENIX",
+    "description": "Regrow Your Haaaair. Restore Your Youth. Revive Your Self-esteem! At Eugenix, we have perfected the art of Hair Restoration owing to two decades of research and innovation. Our revolutionary DHT Technique gives you a premium and satisfactory Hair Transplant experience.",
+    "button_text": "Book a Free Consultation",
+    "banner_img": "/bhubaneswar/react/assets/images/imgi_2_banner-image-1.png"
+  },
+  "stats": [
+    { "count": "18000", "symbol": "+", "label": "Happy Clients", "icon": "/bhubaneswar/react/assets/images/imgi_45_c-icon-1.png" },
+    { "count": "30", "symbol": "+", "label": "Years of Experience", "icon": "/bhubaneswar/react/assets/images/imgi_46_c-icon-2.png" },
+    { "count": "50", "symbol": "M+", "label": "Grafts Done", "icon": "/bhubaneswar/react/assets/images/imgi_47_c-icon-3.png" },
+    { "count": "1800", "symbol": "+", "label": "Cases of Grade 6/7 Baldness Treated", "icon": "/bhubaneswar/react/assets/images/imgi_48_c-icon-4.png" },
+    { "count": "4.9", "symbol": "", "label": "Google Ratings", "icon": "/bhubaneswar/react/assets/images/imgi_49_c-icon-5.png" }
+  ],
+  "videos": [
+    { "id": "yJrn4hAnbGA" },
+    { "id": "BYmVrow0gO4" },
+    { "id": "9iZFgP4BVrk" },
+    { "id": "RVxjp8TsmNk" },
+    { "id": "8E2Ts-5jJ10" },
+    { "id": "lxSI8SOYhyU" },
+    { "id": "61mY3cprtNQ" },
+    { "id": "O8gbyo_zwGg" },
+    { "id": "skOL7aNY5Xs" }
+  ],
+  "procedure": [
+    {
+      "title": "Consultation",
+      "icon": "/bhubaneswar/react/assets/images/imgi_40_pro-icon-1.png",
+      "desc": "The first crucial step is a comprehensive consultation with a qualified hair restoration expert. The counselor, with the help of a hair transplant surgeon, will assess your scalp to determine the grade of baldness, the extent of hair loss and the potential donor area."
+    },
+    {
+      "title": "Hairline Design",
+      "icon": "/bhubaneswar/react/assets/images/imgi_41_pro-icon-2.png",
+      "desc": "Based on the evaluation and your desired outcome, the surgeon will create a personalized treatment plan that goes beyond just the number of grafts. This plan incorporates factors like your facial features, existing hair pattern, scalp laxity & desired hairline style."
+    },
+    {
+      "title": "Extraction",
+      "icon": "/bhubaneswar/react/assets/images/imgi_42_pro-icon-4.png",
+      "desc": "Direct Hair Transplant (DHT) utilizes a specialized method that minimizes trauma to the scalp. This ensures healthy grafts with a higher survival rate, ultimately leading to a denser, more natural-looking head of hair."
+    },
+    {
+      "title": "Implanting Grafts",
+      "icon": "/bhubaneswar/react/assets/images/imgi_43_pro-icon-6.png",
+      "desc": "Extracted grafts bypass storage solutions, which can potentially compromise their viability. DHT prioritizes immediate implantation into the recipient area, maximizing the number of healthy follicles that thrive in their new location."
+    },
+    {
+      "title": "After-care",
+      "icon": "/bhubaneswar/react/assets/images/imgi_44_pro-icon-7.png",
+      "desc": "Following the procedure, the scalp may experience some swelling and tenderness, which typically subside within a few days. The Post-surgery care team will provide detailed post-operative instructions to promote healing and optimize graft survival."
+    }
+  ],
+  "services": [
+    {
+      "title": "Hair Transplant In Male",
+      "icon": "/bhubaneswar/react/assets/images/imgi_28_serv-icon-1.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_34_John-Vertical-Copy.png",
+      "content": "<p>After transforming 16,000+ male patients, we have gained paramount experience in the domain. We have pioneered the latest DHT technique to ensure the utmost efficacy in the cases.</p><h4>Who Are The Ideal Candidates For Male Hair Transplant?</h4><p>When it comes to hair transplant surgery, there is no fixed age for undergoing it. However, we would like to say that 25 years is considered the right age because hair loss starts to stabilize at this age. But this doesn’t mean people below the age of 25 are not ideal candidates for transplantation. An individual who is 70-100% bald is considered a good candidate for hair transplantation.</p><h4>Why Avail Hair Transplant Surgery At Eugenix Hair Sciences?</h4><ul><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>Almost 100% Success Rate</li><li>18,000+ Patients Have Been Transformed</li><li>30+ Years of Combined Experience</li></ul>"
+    },
+    {
+      "title": "Hair Transplant in Female",
+      "icon": "/bhubaneswar/react/assets/images/imgi_29_serv-icon-2.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_35_hair-transplant-in-females-service-1.png",
+      "content": "<p>By understanding the value of every graft of the donor area, we have transformed over 2,000+ females so far. We have earned the trust of our clients because of the quality of our services and our patient-first approach.</p><h4>Why Avail Hair Transplant Surgery At Eugenix Hair Sciences?</h4><ul><li>Led By World Renowned Dr Arika Bansal & Dr Pradeep Sethi</li><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>18,000+ Patients Have Been Transformed</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>30+ Years of Combined Experience</li><li>Almost 100% Success Rate</li></ul>"
+    },
+    {
+      "title": "Hairline Reconstruction",
+      "icon": "/bhubaneswar/react/assets/images/imgi_30_serv-icon-3.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_36_hairline-reconstruction-service2-inter-1.png",
+      "content": "<p>At Next.js, we call it the hairline zone and we very well understand how vigilantly a hairline zone must be treated. Understanding every possible minute detail, we have provided all our patients, with the utmost natural-looking hairlines.</p><h4>Who Are The Ideal Candidates For Hairline Reconstruction?</h4><ul><li>Hairline too high</li><li>Doubles and triples in the Hairline</li><li>Norwood Scale 2 & 3</li><li>Adding density in the pre-existing Hairline</li></ul><h4>Why Avail Hair Transplant Surgery At Eugenix Hair Sciences?</h4><ul><li>Led By World Renowned Dr Arika Bansal & Dr Pradeep Sethi</li><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>18,000+ Patients Have Been Transformed</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>30+ Years of Combined Experience</li><li>Almost 100% Success Rate</li></ul>"
+    },
+    {
+      "title": "Eyebrow Reconstruction",
+      "icon": "/bhubaneswar/react/assets/images/imgi_31_serv-icon-4.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_37_eyebrow-reconstruction-service.png",
+      "content": "<p>The aesthetics of the face are very well understood by our expert surgeons. Not just beard, but we have provided our male and female patients with eyebrow reconstruction as well and they all were elated to see their transformation.</p><h4>Who Are The Ideal Candidates For Eyebrow Reconstruction?</h4><ul><li>Thin Eyebrow</li><li>Aging</li><li>Over-Plucking of Eyebrows in Women</li><li>Burns & Trauma</li><li>Alopecia Areata</li><li>Post Cancer Treatment</li><li>Thyroid Disorders</li></ul><h4>Why Avail Hair Transplant Surgery At Eugenix Hair Sciences?</h4><ul><li>Led By World Renowned Dr Arika Bansal & Dr Pradeep Sethi</li><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>18,000+ Patients Have Been Transformed</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>30+ Years of Combined Experience</li></ul>"
+    },
+    {
+      "title": "Moustache & Beard Hair Transplant",
+      "icon": "/bhubaneswar/react/assets/images/imgi_32_serv-icon-5.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_38_beard-hair-transplant-service.png",
+      "content": "<p>We have gained expertise in body hair transplant over these years. Our male patients confidently sport beards and flaunt dense moustaches through our services.</p><h4>Who Are The Ideal Candidates For Moustache & Beard Hair Transplant?</h4><p>The ideal candidates for a beard transplant are those with patchy beard loss rather than those requiring complete reconstruction. We prefer using beard grafts for beard transplants, as scalp hair tends to grow at a faster rate.</p><h4>Why Avail Hair Transplant Surgery At Eugenix Hair Sciences?</h4><ul><li>Led By World Renowned Dr Arika Bansal & Dr Pradeep Sethi</li><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>18,000+ Patients Have Been Transformed</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>30+ Years of Combined Experience</li><li>Almost 100% Success Rate</li></ul>"
+    },
+    {
+      "title": "Corrective Hair Transplant",
+      "icon": "/bhubaneswar/react/assets/images/imgi_33_serv-icon-6.png",
+      "img": "/bhubaneswar/react/assets/images/imgi_39_corrective-hair-transplant-service-inter.png",
+      "content": "<p>Our co-founder Dr Pradeep Sethi personally believes that those who visit us for corrective cases deserve the highest levels of attention and care. Incidentally nearly 40-50 patients come to us every month for corrections.</p><h4>Who Are The Ideal Candidates For Corrective Hair Transplant?</h4><ul><li>Candidates With Unnatural Hairline Position</li><li>Lack of Density</li><li>Hairline is Too Low</li><li>Hair Growth at Wrong Angles & Directions</li><li>Poor Scarring</li><li>Donor Farming</li></ul><h4>Why Avail Hair Transplant Surgery At Corrective Hair Transplant?</h4><ul><li>Led By World Renowned Dr Arika Bansal & Dr Pradeep Sethi</li><li>First To Introduce Cutting Edge DHT Methodology To The World</li><li>Implanted More Than 5,04,00,000 Grafts</li><li>18,000+ Patients Have Been Transformed</li><li>Treated 1,800+ Cases Of Grade 6/7 Baldness</li><li>30+ Years of Combined Experience</li><li>Almost 100% Success Rate</li></ul>"
+    }
+  ],
+  "doctors": [
+    {
+      "name": "Dr. Pradeep Sethi",
+      "qualifications": "Chairman - Eugenix Hair Sciences<br>MD - AIIMS, New Delhi",
+      "img": "/bhubaneswar/react/assets/images/imgi_51_Dr-Pradeep.png"
+    },
+    {
+      "name": "Dr. Arika Bansal",
+      "qualifications": "Founder - Eugenix Hair Sciences<br>MD - AIIMS, New Delhi (Gold Medalist)",
+      "img": "/bhubaneswar/react/assets/images/imgi_50_Dr-Arika.png"
+    }
+  ],
+  "results": [
+    { "name": "Elvish Yadav", "before": "/bhubaneswar/react/assets/images/imgi_21_Elvish-Yadav-Hair-Transplant-Before-and-After-Results.png" },
+    { "name": "Anees Bazmee", "before": "/bhubaneswar/react/assets/images/imgi_19_anees-bazmee-hair-transplant.png" },
+    { "name": "Rakeysh Omprakash Mehra", "before": "/bhubaneswar/react/assets/images/imgi_16_Rakeysh-Omprakash-Mehra-Hair-Transplant-1-1.png" },
+    { "name": "Adrian Brown", "before": "/bhubaneswar/react/assets/images/imgi_11_Adrian-Brown-Body-Hair-Transplant.png" },
+    { "name": "Michael Bevan", "before": "/bhubaneswar/react/assets/images/imgi_18_michael-bevan-hair-transplant-results-2.png" },
+    { "name": "Anup Jalota", "before": "/bhubaneswar/react/assets/images/imgi_25_anup-jalota-hair-transplant.png" },
+    { "name": "Girish Wadhwani", "before": "/bhubaneswar/react/assets/images/imgi_13_Girish-Wadhwani-1-1.png" },
+    { "name": "Jax Austin", "before": "/bhubaneswar/react/assets/images/imgi_27_Jax-Austin-2-1.png" }
+  ],
+  "hairLossSolution": {
+    "heading": "Are You Struggling to Take Control Over Your Hair Loss?",
+    "items": [
+      {
+        "title": "Is your Hair Loss a Roadblock to Finding a Partner?",
+        "text": "Too many men and women find that hair loss has had a negative impact on their confidence & use it as an excuse not to socialize. Instead of doing that, why not visit a Hair Transplant clinic and boost your self-image?",
+        "img": "/bhubaneswar/react/assets/images/journey-img6.jpg"
+      },
+      {
+        "title": "Is Hair Loss holding you back?",
+        "text": "Many individuals feel uncertain about engaging in activities that could reveal their bald or thinning hair. Whether it's participating in outdoor activities like golf, water sports, swimming or enjoying a day at amusement parks with family - the list is endless!",
+        "img": "/bhubaneswar/react/assets/images/solution-img2.jpg"
+      }
+    ]
+  },
+  "textTestimonials": {
+    "heading": "Real Patient Reviews",
+    "items": [
+      {
+        "name": "Abel Francis",
+        "text": "I had my hair transplant with Eugenix in Feb 2023. The experience has been excellent from start to finish, from my first contact with them to their after care team. Everybody is extremely welcoming and professional. All my questions were answered, and I had alot of them, and I was put at ease.<br />Thank you to everyone at Eugenix, for your wonderful service and professionalism.",
+        "rating": 5
+      },
+      {
+        "name": "Tanbir Hossain",
+        "text": "I have done my Hair transplant in 2021 at Eugenix, Mumbai, performed by Dr. Priyadarshini and team and it was a painless experience. They have a wonderful post-op care team who will get in touch with you if you have any concerns. Overall, it was a nice experience and thanks to Dr. Priyadarshini and all the supporting staff for making me comfortable during the process.",
+        "rating": 5
+      },
+      {
+        "name": "Anton Coleman",
+        "text": "I received 5000 grafts from Eugenix. Went from being bald to actually being able to style my hair and try out new designs. First surgery was March 2021 and second was Nov 2021. I've gotten so many compliments regarding my hair and its a huge confidence boost. I recommend Eugenix to anyone and you're free to reach out to me if you have questions about my experience.",
+        "rating": 5
+      },
+      {
+        "name": "Parth Aggarwal",
+        "text": "Excellently managed. The entire team is super meticulous, caring, and professional. The entire experience was beautiful. The doctors themselves are exceptionally skilled at what they do, and I am confidently waiting for the impeccable results that they are known for!",
+        "rating": 5
+      }
+    ]
+  },
+  "endorsements": {
+    "heading": "Endorsements",
+    "items": [
+      { "img": "/bhubaneswar/react/assets/images/logo-iahrs.jpg" },
+      { "img": "/bhubaneswar/react/assets/images/logo-baldtruthtalk.jpg" },
+      { "img": "/bhubaneswar/react/assets/images/logo-hair-transplant-mentor.jpg" }
+    ]
+  },
+  "clinicVideo": {
+    "url": "/bhubaneswar/react/assets/images/Eugenix-Infra-Resized-For-Website.mp4",
+    "heading": "FUE Hair Transplant - Permanent Solution for Natural & Life-long Results",
+    "points": [
+      "Performed Fully by Doctors",
+      "Micro FUE Extraction",
+      "DHI Implantation",
+      "No Strip Scars",
+      "High Density Graft Procedures",
+      "Faster Hair Growth Rates"
+    ]
+  }
+}
