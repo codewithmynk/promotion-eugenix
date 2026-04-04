@@ -10,8 +10,9 @@ const FAQ = ({ data }) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
+    // Live API returns 'list' + 'title'; newer schema uses 'items' + 'sectionTitle'
     const displayFaqs = data?.items || data?.list || [];
-    const title = data?.title || data?.section_title || "Frequently Asked Questions";
+    const title = data?.sectionTitle || data?.title || "Frequently Asked Questions";
 
     if (!displayFaqs || displayFaqs.length === 0) return null;
 
@@ -36,11 +37,11 @@ const FAQ = ({ data }) => {
                                     aria-expanded={isExpanded}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    {faq.question || faq.title}
+                                    {faq.question}
                                 </h4>
                                 <div className={`collapse ${isExpanded ? 'show' : ''}`} style={{ display: isExpanded ? 'block' : 'none' }}>
                                     <div className="content-box entry-content">
-                                        <div dangerouslySetInnerHTML={{ __html: faq.answer || faq.content }} />
+                                        <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                                     </div>
                                 </div>
                             </div>

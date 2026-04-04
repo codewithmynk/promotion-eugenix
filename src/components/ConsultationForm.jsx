@@ -2,10 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const ConsultationForm = ({ data }) => {
-    const sectionTitle = data?.section_title || "Get Free Consultation";
-    const sectionText = data?.section_text || "";
-    const sectionImage = data?.section_image || "/bhubaneswar/react/assets/images/imgi_52_iStock-951021682.png";
-    const formScript = data?.form_script || "";
+    // Live API: section_title, section_text, section_image, form_script
+    // New schema: sectionTitle, description, sectionImage, formScript
+    const sectionTitle = data?.sectionTitle || data?.section_title;
+    const description = data?.description || data?.section_text;
+    const sectionImage = data?.sectionImage || data?.section_image;
+    const formScript = data?.formScript || data?.form_script;
+
+    if (!data || (!data.sectionTitle && !data.section_title && !formScript)) return null;
 
     const formRef = useRef(null);
     const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
@@ -52,7 +56,7 @@ const ConsultationForm = ({ data }) => {
 
                             <div className="block-title">
                                 <h2><strong dangerouslySetInnerHTML={{ __html: sectionTitle }}></strong></h2>
-                                {sectionText && <p>{sectionText}</p>}
+                                {description && <p>{description}</p>}
                             </div>
 
                             <div className="form-block ptb-20 pb-0">

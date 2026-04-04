@@ -23,7 +23,7 @@ const NextArrow = (props) => {
 };
 
 const TextTestimonials = ({ data }) => {
-    if (!data) return null;
+    if (!data || !data.items || data.items.length === 0) return null;
 
     const breakpoints = [
         { breakpoint: 1024, slidesToShow: 2 },
@@ -55,7 +55,7 @@ const TextTestimonials = ({ data }) => {
             <div className="shape_only bounce-y"></div>
             <div className="container relative">
                 <div className="block-title wow fadeInUp" data-wow-delay="0.2s">
-                    <h2 className="text-white text-uppercase">{data.section_title || data.heading || "Real Patient Reviews"}</h2>
+                    <h2 className="text-white text-uppercase">{data.sectionTitle || "Real Patient Reviews"}</h2>
                 </div>
                 
                 <div className="relative">

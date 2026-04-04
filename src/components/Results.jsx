@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import Slider from 'react-slick';
-import Image from 'next/image';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const Results = ({ data }) => {
     const sliderRef = useRef(null);
-    const sectionTitle = data?.section_title || "LIFE-CHANGING RESULTS";
-    const RESULTS = data?.items || (Array.isArray(data) ? data : []);
+    const sectionTitle = data?.sectionTitle || "LIFE-CHANGING RESULTS";
+    const RESULTS = data?.items || [];
 
     const { mounted, slidesToShow } = useResponsiveSlider(
         [
@@ -37,7 +36,7 @@ const Results = ({ data }) => {
         ]
     };
 
-    if (!mounted) return null;
+    if (!mounted || RESULTS.length === 0) return null;
 
     return (
         <section className="results-section bg4" id="results-slider-de">
@@ -60,12 +59,10 @@ const Results = ({ data }) => {
                                     <div key={idx} className="items">
                                         <div className="card-result shine">
                                             <div className="imgbox">
-                                                <Image
-                                                    src={result.before}
+                                                <img
+                                                    src={result.image}
                                                     alt={result.name || "Patient Result"}
-                                                    width={500}
-                                                    height={300}
-                                                    style={{ height: 'auto', width: 'auto' }}
+                                                    style={{ height: 'auto', width: 'auto', maxWidth: '100%' }}
                                                 />
                                             </div>
                                             <h4><span>Before</span><span>After</span></h4>

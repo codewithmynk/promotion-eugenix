@@ -2,26 +2,7 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import Image from 'next/image';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
-
-import toiLogo from '../assets/images/imgi_7_the-times-of-india-logo-png_seeklogo-537021.png';
-import htLogo from '../assets/images/imgi_6_time-now-logo.png';
-import news18Logo from '../assets/images/imgi_3_news18-logo-vector.png';
-import aajTakLogo from '../assets/images/imgi_4_aaj-tak-logo.png';
-import curlyTalesLogo from '../assets/images/imgi_5_curlytales-logo.png';
-import filmfareLogo from '../assets/images/imgi_8_Filmfare.png';
-import brutLogo from '../assets/images/imgi_9_brut.png';
-
-const LOGOS = [
-    { name: 'Times of India', url: toiLogo },
-    { name: 'Hindustan Times', url: htLogo },
-    { name: 'News18', url: news18Logo },
-    { name: 'Aaj Tak', url: aajTakLogo },
-    { name: 'Curly Tales', url: curlyTalesLogo },
-    { name: 'Filmfare', url: filmfareLogo },
-    { name: 'Brut', url: brutLogo }
-];
 
 const FeaturedOn = ({ data }) => {
     const { mounted, slidesToShow } = useResponsiveSlider(
@@ -58,13 +39,12 @@ const FeaturedOn = ({ data }) => {
         ]
     };
 
-    if (!mounted) return null;
+    // Live API returns 'logos' + 'title'; newer schema uses 'items' + 'sectionTitle'
+    const logos = data?.items || data?.logos || [];
+    if (!mounted || !data || (Array.isArray(logos) && logos.length === 0)) return null;
 
-    const displayLogos = data?.logos && data.logos.length > 0 
-        ? data.logos.map(l => ({ name: 'Media Logo', url: l.logo }))
-        : LOGOS;
-
-    const sectionTitle = data?.title || "AS SEEN ON";
+    const displayLogos = logos.map(l => ({ name: 'Media Logo', url: l.logo }));
+    const sectionTitle = data.sectionTitle || data.title || "AS SEEN ON";
 
     return (
         <section className="media-section ptb-30 bg4">
@@ -77,11 +57,9 @@ const FeaturedOn = ({ data }) => {
                     {displayLogos.map((logo, index) => (
                         <div key={index} className="items">
                             <a className="card-media" href="#" target="_blank" rel="noopener noreferrer">
-                                <Image 
+                                <img 
                                     src={logo.url} 
-                                    alt={logo.name} 
-                                    width={200}
-                                    height={80}
+                                    alt={logo.name}
                                     style={{ height: 'auto', width: 'auto', maxWidth: '160px', maxHeight: '80px' }}
                                 />
                             </a>

@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf .next react && next build",
     "start": "next start",
-    "lint": "next lint"
+    "clean": "rm -rf .next react node_modules/.cache",
+    "lint": "next lint",
+    "sync": "rm -rf '/Users/mynkpatel/Local Sites/eugenix/app/public/bhubaneswar/react/' && rsync -av ./react/ '/Users/mynkpatel/Local Sites/eugenix/app/public/bhubaneswar/react/'",
+    "deploy": "npm run build && npm run sync"
   },
   "dependencies": {
     "framer-motion": "^12.29.0",
@@ -30,3 +33,5 @@
     "tailwindcss": "^4.1.18"
   }
 }
+
+

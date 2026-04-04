@@ -1,15 +1,16 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 const HairLossSolution = ({ data }) => {
-    if (!data) return null;
+    if (!data || (!data.blocks || data.blocks.length === 0)) return null;
 
-    const title = data.title || data.heading;
-    const blocks = data.blocks || data.items || [];
-    const buttonLabel = data.button_label;
-    const buttonLink = data.button_link;
+    // Live API: title, blocks[].content, button_label, button_link
+    // New schema: sectionTitle, blocks[].description, buttonLabel, buttonLink
+    const title = data.sectionTitle || data.title;
+    const blocks = data.blocks || [];
+    const buttonLabel = data.buttonLabel || data.button_label;
+    const buttonLink = data.buttonLink || data.button_link || "#contact-section";
 
     return (
         <>
@@ -38,16 +39,14 @@ const HairLossSolution = ({ data }) => {
                             <div className="row v-center" key={index}>
                                 <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12 left-block">
                                     {item.title && <h4>{item.title}</h4>}
-                                    <div dangerouslySetInnerHTML={{ __html: item.content || item.text }} />
+                                    <div dangerouslySetInnerHTML={{ __html: item.description || item.content }} />
                                 </div>
                                 <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 right-block">
                                     <div className="imgbox">
-                                        <Image 
-                                            src={item.image || item.img} 
-                                            alt={item.title || "Hair Loss Solution"} 
-                                            width={600}
-                                            height={400}
-                                            style={{ height: 'auto', width: 'auto' }}
+                                        <img 
+                                            src={item.image} 
+                                            alt={item.title || "Hair Loss Solution"}
+                                            style={{ height: 'auto', width: 'auto', maxWidth: '100%' }}
                                         />
                                     </div>
                                 </div>

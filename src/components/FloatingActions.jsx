@@ -37,9 +37,9 @@ const FloatingActions = ({ config }) => {
     });
   };
 
-  const whatsappNumber = config?.whatsapp_number || "919998199981";
-  const mobileLabel = config?.mobile_header_button_label || "Get Free Consultation";
-  const mobileLink = config?.mobile_header_button_link || "#contact-section";
+  const whatsappNumber = config?.whatsappNumber || "919998199981";
+  const mobileLabel = config?.headerButtonLabel || "Get Free Consultation";
+  const mobileLink = config?.headerButtonLink || "#contact-section";
 
   // Match the message logic from header.php if needed, or keep it simple
   const whatsappMsg = encodeURIComponent("Hello! Can I get more information on this?");

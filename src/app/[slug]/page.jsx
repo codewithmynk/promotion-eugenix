@@ -18,7 +18,8 @@ export default async function SlugPage(props) {
 
   let initialData = null;
   try {
-    const url = `https://promotion.eugenixhairsciences.com/bhubaneswar/wp-json/eugenix/v1/landing-page?slug=${slug}`;
+    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://promotion.eugenixhairsciences.com/bhubaneswar/wp-json/eugenix/v1/landing-page';
+    const url = `${apiBase}?slug=${slug}`;
     const res = await fetch(url);
     if (res.ok) {
       initialData = await res.json();

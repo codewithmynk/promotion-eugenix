@@ -1,17 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 const ClinicVideo = ({ data }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
-    if (!data) return null;
+    if (!data || (!data.videoUrl && !data.url && !data.iframeLink)) return null;
 
-    const videoType = data.video_type || 'video-file'; // fallback
-    const videoUrl = data.url || '';
-    const iframeLink = data.iframe_link || '';
-    const posterImage = data.poster || "/bhubaneswar/react/assets/images/imgi_10_WhatsApp-Image-2025-01-11-at-10.44.03-AM.png";
+    // Live API: url, heading, points[]; new schema: videoUrl/iframeLink, sectionTitle, description
+    const videoType = data.videoType || 'video-file';
+    const videoUrl = data.videoUrl || data.url;
+    const iframeLink = data.iframeLink;
+    const posterImage = data.posterImage || "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/themes/eugenix/assets/images/video-thumb.jpg";
+    const sectionTitle = data.sectionTitle || data.heading;
+    // Convert points[] array to description HTML, or use existing HTML description
+    let description = data.description;
+    if (!description && Array.isArray(data.points) && data.points.length > 0) {
+        description = '<ul>' + data.points.map(p => `<li>${p}</li>`).join('') + '</ul>';
+    }
 
     return (
         <section id="clinicVideo" className="clinicvideo-section ptb-80">
@@ -46,22 +52,16 @@ const ClinicVideo = ({ data }) => {
 
                     <div className="col-lg-6 col-md-12 col-sm-12 col-12 right-block wow fadeInRight" data-wow-delay="0.2s">
                         <div className="textarea">
-                            {data.heading && (
+                            {sectionTitle && (
                                 <div className="block-title">
-                                    <h2>{data.heading}</h2>
+                                    <h2 dangerouslySetInnerHTML={{ __html: sectionTitle }} />
                                 </div>
                             )}
 
                             <div className="textbox entry-content">
-                                {data.content ? (
-                                    <div dangerouslySetInnerHTML={{ __html: data.content }} />
-                                ) : data.points ? (
-                                    <ul>
-                                        {data.points.map((point, index) => (
-                                            <li key={index}><span>{point}</span></li>
-                                        ))}
-                                    </ul>
-                                ) : null}
+                                {description && (
+                                    <div dangerouslySetInnerHTML={{ __html: description }} />
+                                )}
                             </div>
                         </div>
                     </div>

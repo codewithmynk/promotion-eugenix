@@ -60,10 +60,22 @@ body {
   }
 
   .hero-caption .h1 {
+    color: #fff !important;
     font-size: 66px !important;
-    /* Theme original */
     line-height: 1.1 !important;
     margin-bottom: 25px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero-caption .h1 strong {
+    color: #800040 !important;
+  }
+
+  .hero-caption {
+    width: 100% !important;
+    max-width: 600px !important;
+    /* Prevent cramped text on desktop */
   }
 }
 

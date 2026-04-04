@@ -5,8 +5,8 @@ import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const Services = ({ data }) => {
     const SERVICES_DATA = data?.items || [];
-    const sectionTitle = data?.section_title || "Hair Transplant Services";
-    const btnLabel = data?.button_label || "Get Free Consultation";
+    const sectionTitle = data?.sectionTitle || "Hair Transplant Services";
+    const btnLabel = data?.buttonLabel || "Get Free Consultation";
 
     const [nav1, setNav1] = useState(null);
     const [nav2, setNav2] = useState(null);
@@ -51,7 +51,7 @@ const Services = ({ data }) => {
         infinite: false
     };
 
-    if (!mounted) return null;
+    if (!mounted || SERVICES_DATA.length === 0) return null;
 
     return (
         <section className="service-section">
@@ -87,16 +87,20 @@ const Services = ({ data }) => {
                                     <div className="row serv-text-inner">
                                         <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 left-block">
                                             <h3>{service.title}</h3>
-                                            <div dangerouslySetInnerHTML={{ __html: service.content }}></div>
+                                            <div dangerouslySetInnerHTML={{ __html: service.description }}></div>
                                             <div className="btnbox pt-0">
-                                                <a className="btn primary" href="#consultation">
-                                                    <span>{btnLabel} <i className="las la-arrow-right"></i></span>
+                                                <a className="btn primary" href={service.buttonLink || "#consultation"}>
+                                                    <span>{service.buttonLabel || btnLabel} <i className="las la-arrow-right"></i></span>
                                                 </a>
                                             </div>
                                         </div>
                                         <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 right-block">
-                                            <div className="serv-text-imgbox">
-                                                <img src={service.image} alt={service.title} />
+                                            <div className="serv-text-imgbox" style={{ minHeight: '300px' }}>
+                                                <img 
+                                                    src={service.image} 
+                                                    alt={service.title} 
+                                                    style={{ width: '100%', height: 'auto', display: 'block' }} 
+                                                />
                                             </div>
                                         </div>
                                     </div>

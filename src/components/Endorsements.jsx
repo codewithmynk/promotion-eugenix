@@ -25,9 +25,9 @@ const NextArrow = (props) => {
 const Endorsements = ({ data }) => {
     if (!data) return null;
 
-    // Support all API structure variations
-    const title = data.section_title || data.title || data.heading;
-    const items = data.gallery || data.items || [];
+    // Live API: section_title + gallery[]; new schema: sectionTitle + items[]
+    const title = data.sectionTitle || data.section_title;
+    const items = data.items || data.gallery || [];
     const itemsCount = items.length;
 
     const breakpoints = [
@@ -86,7 +86,7 @@ const Endorsements = ({ data }) => {
                             <div className="card-media crad-endors">
                                 <div className="imgbox">
                                    <img 
-                                        src={item.image || item.img} 
+                                        src={item.image} 
                                         alt={`Endorsement ${index}`} 
                                     />
                                </div>

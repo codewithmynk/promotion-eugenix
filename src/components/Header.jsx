@@ -1,9 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import logo from '../assets/images/imgi_1_sitelogo.png';
-
 const Header = ({ data }) => {
     const [isSticky, setIsSticky] = useState(false);
 
@@ -23,15 +20,17 @@ const Header = ({ data }) => {
         };
     }, []);
 
-    // Dynamic values with fallbacks
-    const logoUrl = data?.header_logo || logo;
-    const whatsAppNumber = data?.whatsapp_number || '919998199981';
-    const mobileNumber = data?.mobile_number || '+91 9998199981';
-    // Fallback texts
+    if (!data) return null;
+
+    // Strict mapping to PHP API (eugenix-headless-api.php)
+    const logoUrl = data.headerLogo || "";
+    const whatsAppNumber = data.whatsappNumber || "";
+    const mobileNumber = data.mobileNumber || "";
+    const btnLabel = data.headerButtonLabel || "";
+    const btnLink = data.headerButtonLink || "#contact-section";
+    
     const default_message = "Hello! Can you provide me more information on this?";
     const encoded_message = encodeURIComponent(default_message);
-    const btnLabel = data?.header_button_label || 'FREE Consultation';
-    const btnLink = data?.header_button_link || '#consultation';
 
     return (
         <header id="Header" className={`header trans ${isSticky ? 'darkHeader-sticky fadeInDown animated' : ''}`}>
@@ -40,14 +39,12 @@ const Header = ({ data }) => {
                     <div className="header-left d-flex v-center mr-auto">
                         <h1 className="site-logo trans">
                             <a href="/" title="Eugenix Hair Sciences Pvt Ltd.">
-                                <Image 
-                                    src={logoUrl} 
-                                    alt="Eugenix Hair Sciences Pvt Ltd." 
-                                    title="Eugenix Hair Sciences Pvt Ltd." 
-                                    priority={true} 
-                                    width={240} 
-                                    height={60} 
+                                <img 
+                                    src={logoUrl}
+                                    alt="Eugenix Hair Sciences Pvt Ltd."
+                                    title="Eugenix Hair Sciences Pvt Ltd."
                                     id="header-logo"
+                                    style={{ maxWidth: 240, height: 'auto' }}
                                 />
                             </a>
                         </h1>

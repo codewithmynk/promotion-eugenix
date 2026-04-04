@@ -2,17 +2,17 @@
 
 import React from 'react';
 
-const Contact = ({ data }) => {
-    if (!data) return null;
+const Contact = React.memo(({ data, config }) => {
+    if (!data || (!data.addressBlock && !data.phone && !data.email)) return null;
 
-    const contactTitle = data.contact_section_title || "Contact Us";
-    const addressBlock = Array.isArray(data.address_block) ? data.address_block : [];
-    const phone = data.clinic_number || "+91 8826473333";
-    const email = data.email || "info@eugenix.in";
-    const workingHours = data.working_hours || "Mon-Sun: 09:00 AM TO 09:00 PM";
-    const mapIframe = data.map_iframe_link || `<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3771.095302624525!2d72.833065!3d19.059547!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c91613ec0001%3A0xa2f258def56c897f!2sEugenix%20Hair%20Sciences!5e0!3m2!1sen!2sin!4v1686207204332!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-    const socialMedia = data.social_media || [];
-    const socialMediaTitle = data.social_media_section_title || "Follow Us";
+    const contactTitle = data.sectionTitle || "Contact Us";
+    const addressBlock = (Array.isArray(data.addressBlock) && data.addressBlock.length > 0) ? data.addressBlock : [];
+    const phone = data.phone;
+    const email = data.email;
+    const workingHours = data.workingHours;
+    const mapIframe = data.mapIframeLink;
+    const socialMedia = config?.socialMedia || [];
+    const socialMediaTitle = config?.socialMediaSectionTitle || "Follow Us";
 
     return (
         <section className="contact-section ptb-100 pt-0">
@@ -73,6 +73,6 @@ const Contact = ({ data }) => {
             )}
         </section>
     );
-};
+});
 
 export default Contact;

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import Image from 'next/image';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const Procedure = ({ data }) => {
@@ -16,9 +15,9 @@ const Procedure = ({ data }) => {
     );
 
     const PROCEDURES = data?.items || [];
-    const sectionTitle = data?.section_title || "Hair Transplant Process";
-    const btnLabel = data?.button_label || "Get Free Consultation";
-    const btnLink = data?.button_link || "#consultation";
+    const sectionTitle = data?.sectionTitle || "Hair Transplant Process";
+    const btnLabel = data?.buttonLabel || "Get Free Consultation";
+    const btnLink = data?.buttonLink || "#consultation";
     
     const settings = {
         dots: false,
@@ -54,7 +53,7 @@ const Procedure = ({ data }) => {
         ]
     };
 
-    if (!mounted) return null;
+    if (!mounted || PROCEDURES.length === 0) return null;
 
     return (
         <section className="procedure-section ptb-60 bg4">
@@ -73,14 +72,22 @@ const Procedure = ({ data }) => {
                         <div key={idx} className="items wow fadeInLeft" data-wow-delay={`${0.1 * (idx + 1)}s`}>
                             <div className="card-procedure">
                                 <i className="iconbox">
-                                    <Image src={item.icon} alt={item.title} width={60} height={60} />
+                                    <img src={item.icon} alt={item.title} style={{ width: 60, height: 60 }} />
                                 </i>
                                 <h4>{item.title}</h4>
-                                <div dangerouslySetInnerHTML={{ __html: item.desc }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
                             </div>
                         </div>
                     ))}
                 </Slider>
+
+                {(data?.buttonLabel && data?.buttonLink) && (
+                    <div className="text-center mt-40 wow fadeInUp">
+                        <a href={data.buttonLink} className="btn primary big">
+                            <span>{data.buttonLabel} <i className="las la-arrow-right"></i></span>
+                        </a>
+                    </div>
+                )}
             </div>
         </section>
     );
