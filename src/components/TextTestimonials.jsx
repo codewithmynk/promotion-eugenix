@@ -51,7 +51,12 @@ const TextTestimonials = ({ data }) => {
     if (!mounted) return null;
 
     return (
-        <section className="testimonial-section bg1 ptb-60">
+        <section className="testimonial-section bg1 ptb-60 relative">
+            <div className="parallelogram_shape">
+                <span className="shape_1"></span>
+                <span className="shape_2"></span>
+                <span className="shape_3"></span>
+            </div>
             <div className="shape_only bounce-y"></div>
             <div className="container relative">
                 <div className="block-title wow fadeInUp" data-wow-delay="0.2s">

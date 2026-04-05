@@ -11,6 +11,14 @@ const poppins = Poppins({
 export const metadata = {
   title: "Eugenix Hair Sciences - Trusted Hair Transplant Clinic",
   description: "Specialized hair transplant clinic offering advanced procedures and results.",
+  icons: {
+    icon: [
+      { url: '/favicon.png' },
+      { url: '/favicon.ico', type: 'image/x-icon' }
+    ],
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  }
 };
 
 export default function RootLayout({ children }) {

@@ -1,6 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useInView, useSpring, useTransform, animate } from 'framer-motion';
+
+const Counter = ({ value, duration = 2 }) => {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
+    const count = useSpring(0, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    const [display, setDisplay] = useState(0);
+
+    useEffect(() => {
+        if (inView) {
+            count.set(parseFloat(value) || 0);
+        }
+    }, [inView, value, count]);
+
+    useEffect(() => {
+        return count.on("change", (latest) => {
+            const valStr = String(value);
+            if (valStr.includes('.')) {
+                setDisplay(latest.toFixed(1));
+            } else {
+                setDisplay(Math.round(latest));
+            }
+        });
+    }, [count, value]);
+
+    return <span ref={ref}>{display}</span>;
+};
 
 const Stats = ({ data }) => {
     if (!data || (!data.items || data.items.length === 0)) return null;
@@ -27,14 +59,11 @@ const Stats = ({ data }) => {
             <div className="container relative">
                 {data.sectionTitle && (
                     <div className="block-title text-center mb-40 wow fadeInUp">
-                        <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle }} />
+                        <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: data.sectionTitle }} />
                     </div>
                 )}
                 <div className="counter-list d-flex">
                     {statsList.map((stat, index) => {
-                        // Based on front-page.php logic where index '5' (which is the 5th item, i.e., index 4) gets standard span
-                        const isStaticSpan = (index === 4);
-                        
                         return (
                             <div key={index} className="items">
                                 <div className="card-counter d-flex v-center">
@@ -46,11 +75,7 @@ const Stats = ({ data }) => {
 
                                     <div className="textbox">
                                         <strong>
-                                            {isStaticSpan ? (
-                                                <span>{stat.count}</span>
-                                            ) : (
-                                                <span className="timer" data-to={stat.count} data-speed="1500">{stat.count}</span>
-                                            )}
+                                            <Counter value={stat.count} speed={1500} />
                                             {stat.symbol && (
                                                 <span className="count-symbol">{stat.symbol}</span>
                                             )}

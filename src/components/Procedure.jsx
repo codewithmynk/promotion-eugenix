@@ -61,16 +61,14 @@ const Procedure = ({ data }) => {
             <div className="container relative">
                 <div className="sigma_dots"></div>
 
-                <div className="block-title row">
-                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-block wow fadeInLeft" data-wow-delay="0.2s">
-                        <h2 dangerouslySetInnerHTML={{ __html: sectionTitle }} />
-                    </div>
+                <div className="block-title text-center ptb-20 pt-0 wow fadeInUp" data-wow-delay="0.2s">
+                    <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: sectionTitle }} />
                 </div>
 
-                <Slider key={slidesToShow} {...settings} className="procedure-list procedure-slider ptb-20 pb-0">
+                <Slider key={slidesToShow} {...settings} className="procedure-list procedure-slider ptb-20 pb-0 h-100">
                     {PROCEDURES.map((item, idx) => (
-                        <div key={idx} className="items wow fadeInLeft" data-wow-delay={`${0.1 * (idx + 1)}s`}>
-                            <div className="card-procedure">
+                        <div key={idx} className="items h-100 wow fadeInLeft" data-wow-delay={`${0.1 * (idx + 1)}s`}>
+                            <div className="card-procedure h-100">
                                 <i className="iconbox">
                                     <img src={item.icon} alt={item.title} style={{ width: 60, height: 60 }} />
                                 </i>

@@ -1,10 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
+import { useInView } from 'framer-motion';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const FeaturedOn = ({ data }) => {
+    const sectionRef = useRef(null);
+    const sliderRef = useRef(null);
+    const isInView = useInView(sectionRef, { amount: 0.1 });
+
     const { mounted, slidesToShow } = useResponsiveSlider(
         [
             { breakpoint: 1024, slidesToShow: 4 },
@@ -20,7 +25,7 @@ const FeaturedOn = ({ data }) => {
         speed: 500,
         slidesToShow,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: isInView,
         autoplaySpeed: 3000,
         arrows: true,
         responsive: [
@@ -47,13 +52,13 @@ const FeaturedOn = ({ data }) => {
     const sectionTitle = data.sectionTitle || data.title || "AS SEEN ON";
 
     return (
-        <section className="media-section ptb-30 bg4">
+        <section className="media-section ptb-30 bg4" ref={sectionRef}>
             <div className="container">
                 <div className="block-title text-center wow fadeInUp" data-wow-delay="0.2s">
                     <div className="small-title">{sectionTitle}</div>
                 </div>
 
-                <Slider {...settings} className="media-list media-slider wow fadeInUp" data-wow-delay="0.3s">
+                <Slider {...settings} className="media-list media-slider wow fadeInUp" data-wow-delay="0.3s" ref={sliderRef} key={`${slidesToShow}-${isInView}`}>
                     {displayLogos.map((logo, index) => (
                         <div key={index} className="items">
                             <a className="card-media" href="#" target="_blank" rel="noopener noreferrer">

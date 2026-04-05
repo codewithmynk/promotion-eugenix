@@ -202,13 +202,13 @@ body {
   flex-direction: row !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 30px !important;
-  margin-top: 30px !important;
 }
 
 @media screen and (max-width: 991px) {
   .results-custom-arrows {
-    display: none !important;
+    display: flex !important;
+    gap: 20px !important;
+    margin-top: 20px !important;
   }
 }
 
@@ -225,6 +225,18 @@ body {
 .custom-arrow:hover {
   transform: scale(1.2) !important;
   opacity: 0.8 !important;
+}
+
+/* Standardized Slide Pagination (slide-numb) */
+.slide-numb {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  color: #262d33 !important;
+  font-weight: 500 !important;
+  margin: 0 15px !important;
+  letter-spacing: 1px !important;
 }
 
 .card-result h4 {
@@ -370,8 +382,25 @@ body {
   display: block !important;
 }
 
+.procedure-slider .slick-track {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.procedure-slider .slick-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
+.procedure-slider .slick-slide > div {
+  width: 100% !important;
+  display: flex !important;
+}
+
 .procedure-list .items {
   padding: 15px !important;
+  display: flex !important;
+  flex: 1 !important;
 }
 
 .card-procedure {
@@ -648,7 +677,7 @@ body {
 
 /* Testimonials Section Redesign */
 .testimonial-section {
-  background: #800040 !important;
+  background: #800040;
   position: relative;
   overflow: hidden;
 }
@@ -973,7 +1002,7 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: -100px;
+  bottom: -100px !important;
   /* Initially hidden below screen */
   z-index: 1000;
   background: #fff;
@@ -990,7 +1019,7 @@ body {
   }
 
   .book-consult-btnbox.darkHeader {
-    bottom: 0;
+    bottom: 0 !important;
   }
 
   /* Adjust floating buttons when sticky footer is visible to avoid overlap */

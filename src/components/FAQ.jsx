@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ = ({ data }) => {
     // Default open first item like in WP theme if not specified otherwise
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(null);
 
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -22,7 +23,7 @@ const FAQ = ({ data }) => {
                 
                 {title && (
                     <div className="block-title text-center">
-                        <h2 dangerouslySetInnerHTML={{ __html: title }} />
+                        <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: title }} />
                     </div>
                 )}
 
@@ -39,11 +40,21 @@ const FAQ = ({ data }) => {
                                 >
                                     {faq.question}
                                 </h4>
-                                <div className={`collapse ${isExpanded ? 'show' : ''}`} style={{ display: isExpanded ? 'block' : 'none' }}>
-                                    <div className="content-box entry-content">
-                                        <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
-                                    </div>
-                                </div>
+                                <AnimatePresence initial={false}>
+                                    {isExpanded && (
+                                        <motion.div 
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            style={{ overflow: 'hidden' }}
+                                        >
+                                            <div className="content-box entry-content">
+                                                <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         );
                     })}

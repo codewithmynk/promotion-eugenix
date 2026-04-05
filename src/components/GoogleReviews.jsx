@@ -37,10 +37,15 @@ const GoogleReviews = ({ data }) => {
     }, [scriptContent]);
 
     return (
-        <section className="google-reviews-section ptb-60 bg-light">
+        <section className="testimonial-section google-reviews-section ptb-60 bg4 relative">
+            <div className="parallelogram_shape">
+                <span className="shape_1"></span>
+                <span className="shape_2"></span>
+                <span className="shape_3"></span>
+            </div>
             <div className="container">
                 <div className="block-title text-center mb-40 wow fadeInUp">
-                    <h2 dangerouslySetInnerHTML={{ __html: sectionTitle }} />
+                    <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: sectionTitle }} />
                 </div>
                 
                 <div 

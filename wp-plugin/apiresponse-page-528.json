@@ -1,4 +1,5 @@
 {
+  "id": 528,
   "config": {
     "headerLogo": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2023/06/sitelogo.png",
     "topBarText": false,
@@ -23,6 +24,7 @@
     "image": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2025/01/banner-image-1.png"
   },
   "stats": {
+    "sectionTitle": null,
     "backgroundImage": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2023/06/funfact-img.jpg",
     "items": [
       {
@@ -61,7 +63,53 @@
     "sectionTitle": "Watch Videos",
     "buttonLabel": "",
     "buttonLink": "",
-    "items": []
+    "items": [
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/9tJYjp7TcVQ\" title=\"Why Success Needs Struggle | Anees Bazmee | Filmmaking &amp; Life Lessons\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BnA3YlpYKZc\" title=\"Rahul Vaidya&#39;s Hair Transformation Journey at Eugenix Hair Sciences | Indian Idol Star’s Secret!\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/09-5Cj7wwLw\" title=\"Why Success Needs Roots | Abhishek Nayar &amp; Dr. Pradeep | Cricket &amp; Life Lessons\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DD8wY8olfPY\" title=\"Sreesanth’s Untold Story: From Childhood Tumor to World Cup Glory | Rooted For Life\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/wZmqelxwCys\" title=\"Dr. Pradeep Sethi: “No one can tell that Elvish Yadav &amp; Mika Singh had hair transplants because…!”\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/lxSI8SOYhyU\" title=\"From Grade 7 Baldness to Iconic Hair: Surendra Pal Singh (Dronacharya) Shares His Secret!\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/61mY3cprtNQ\" title=\"Sarabhai vs Sarabhai Star Sumeet Raghavan Opens Up About His Hair Transplant at Eugenix\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/skOL7aNY5Xs\" title=\"Cricket Star S. Sreesanth’s Hair Transplant at Eugenix | Best Hair Transplant in India\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/q5U1BKCzVg0\" title=\"Mika Singh&#39;s Hair Transplant Revealed! Why He Chose Eugenix Hair Sciences\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/v-uqUb9t_QI\" title=\"2 Years After Hair Transplant! Rajesh Yadav&#39;s Life-Changing Results &amp; New Confidence\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/6hvxsmZrwSQ\" title=\"Andre Timmins Hair Transplant Review: The Wizcraft Co-Founder’s New Look\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/LsFfUOp2Zcc\" title=\"Boney Kapoor &amp; Anees Bazmee Talk Hair Transplants with Eugenix Experts\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/rOv7OKUC4OI\" title=\"Former Indian Cricketer Mohd. Azharuddin&#39;s Hair Loss &amp; Hair Transplant Journey at Eugenix\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/eykWSGB4gzk\" title=\"Raghav Juyal Talks with Expert: Exclusive Insights and Inspiration from the Actor\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      },
+      {
+        "id": "\u003Ciframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BYmVrow0gO4\" title=\"YouTuber Elvish Yadav’s Hair Transplant Journey &amp; Transformation - Before &amp; After Results\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen\u003E\u003C/iframe\u003E"
+      }
+    ]
   },
   "procedure": {
     "sectionTitle": "Hair Transplant Process",
@@ -97,6 +145,7 @@
   },
   "services": {
     "sectionTitle": "Hair Transplant Services",
+    "buttonLabel": null,
     "items": [
       {
         "title": "Hair Transplant In Male",
@@ -315,5 +364,24 @@
     "email": "info@eugenix.in",
     "workingHours": "Mon-Sun: 9:00 AM TO 9:00 PM",
     "mapIframeLink": "\u003Ciframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.464265834729!2d85.79540067523641!3d20.28104158118769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909c3bf212aef%3A0x3307461a8df9638e!2sEugenix%20Hair%20Sciences!5e0!3m2!1sen!2sin!4v1761373958111!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"\u003E\u003C/iframe\u003E"
+  },
+  "reviewsGoogle": {
+    "sectionTitle": "Reviews on Google",
+    "reviewScript": "\u003Cscript defer async src='https://cdn.trustindex.io/loader.js?906599d1520f8065485696d3394'\u003E\u003C/script\u003E"
+  },
+  "journey": {
+    "sectionTitle": "",
+    "items": []
+  },
+  "india": {
+    "sectionTitle": "",
+    "items": []
+  },
+  "ideal": {
+    "sectionTitle": "",
+    "description": "",
+    "image": "",
+    "buttonLabel": "",
+    "buttonLink": ""
   }
 }

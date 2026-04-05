@@ -1,34 +1,47 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const FloatingActions = ({ config }) => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
+  const thresholdRef = useRef(1000);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      const directionUp = scrollY < lastScrollY.current;
       
+      // Update threshold dynamically if element exists
+      const clinicVideoElem = document.getElementById('clinicVideo');
+      if (clinicVideoElem) {
+        thresholdRef.current = clinicVideoElem.offsetTop;
+      }
+
       // Back to Top appears after 600px
       setShowScrollTop(scrollY > 600);
-      
+
       // Mobile Sticky CTA logic:
-      // 1. Must be past 700px threshold
-      // 2. Must be scrolling UP (scrollY < lastScrollY)
-      if (scrollY > 700 && scrollY < lastScrollY) {
+      // 1. Must be past the third section threshold
+      // 2. Guard: Never show in the first 200px (Hero area)
+      if (scrollY > thresholdRef.current && scrollY > 200) {
         setShowStickyCTA(true);
+        document.body.classList.add('darkHeader-sticky');
       } else {
         setShowStickyCTA(false);
+        document.body.classList.remove('darkHeader-sticky');
       }
-      
-      setLastScrollY(scrollY);
+
+      lastScrollY.current = scrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.classList.remove('darkHeader-sticky');
+    };
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -38,8 +51,8 @@ const FloatingActions = ({ config }) => {
   };
 
   const whatsappNumber = config?.whatsappNumber || "919998199981";
-  const mobileLabel = config?.headerButtonLabel || "Get Free Consultation";
-  const mobileLink = config?.headerButtonLink || "#contact-section";
+  const mobileLabel = "Get Free Consultation";
+  const mobileLink = "#contact-section";
 
   // Match the message logic from header.php if needed, or keep it simple
   const whatsappMsg = encodeURIComponent("Hello! Can I get more information on this?");

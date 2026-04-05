@@ -36,86 +36,14 @@ import FloatingActions from './FloatingActions';
 
 export default function ClientHome({ initialData }) {
   const [pageData, setPageData] = useState(initialData || null);
-  const lastScrollY = useRef(0);
-
   useEffect(() => {
-    console.log("ClientHome mounted with initialData:", initialData);
-    console.log("Current pageData state:", pageData);
-    const handleGlobalScroll = () => {
-      const scrollY = window.scrollY;
-      const directionUp = scrollY < lastScrollY.current;
-      const pastThreshold = scrollY > 700;
-
-      if (typeof document !== 'undefined') {
-        // Toggle class directly on body to avoid component state re-renders where possible
-        if (pastThreshold && directionUp) {
-          document.body.classList.add('darkHeader-sticky');
-        } else {
-          document.body.classList.remove('darkHeader-sticky');
-        }
-      }
-      lastScrollY.current = scrollY;
-    };
-
-    window.addEventListener('scroll', handleGlobalScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleGlobalScroll);
-      if (typeof document !== 'undefined') {
-        document.body.classList.remove('darkHeader-sticky');
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Strategy A: Stale-While-Revalidate
-    // We intentionally removed the `if (initialData) return;` so that even if SSG provides initialData,
-    // the client fetches fresh data from the API in the background and updates the UI.
-    const fetchPageData = async () => {
-      console.log("Next.js: Fetching live data from WordPress...");
-      try {
-        // 1. Try to get slug from URL query params (e.g. ?slug=gurugram)
-        const params = new URLSearchParams(window.location.search);
-        let slug = params.get('slug');
-
-        // 2. If no query param, try to extract from pathname (e.g. /bhubaneswar/react/gurugram)
-        if (!slug) {
-            const pathSegments = window.location.pathname.split('/').filter(Boolean);
-            const reactIndex = pathSegments.indexOf('react');
-            if (reactIndex !== -1 && pathSegments.length > reactIndex + 1) {
-                // The segment immediately following 'react' is our slug
-                slug = pathSegments[reactIndex + 1];
-            }
-        }
-
-        const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://promotion.eugenixhairsciences.com/bhubaneswar/wp-json/eugenix/v1/landing-page';
-        const url = slug ? `${API_BASE}?slug=${slug}` : `${API_BASE}?id=9`;
-
-        console.log(`Next.js API Requesting URL: ${url}`);
-        const response = await fetch(url);
-        
-        console.log("Next.js API Response Status:", response.status);
-        
-        if (response.ok) {
-          const liveData = await response.json();
-          console.log("Next.js: Successfully loaded live data:", liveData);
-          setPageData(liveData);
-          
-          // Re-sync WOW.js after new data is injected into the DOM
-          if (typeof window !== 'undefined' && window.WOW) {
-              setTimeout(() => {
-                  new window.WOW({ live: true }).init();
-              }, 500);
-          }
-        } else {
-          console.error("Next.js: API returned an error:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Next.js: Fetch error (CORS or Network):", error);
-      }
-    };
-
-    fetchPageData();
-  }, []);
+    // Re-sync WOW.js after new data is injected into the DOM
+    if (pageData && typeof window !== 'undefined' && window.WOW) {
+        setTimeout(() => {
+            new window.WOW({ live: true }).init();
+        }, 800);
+    }
+  }, [pageData]);
 
   // Ensure all sections are ready for mapping even if API keys are missing
   const safeData = {
@@ -145,7 +73,7 @@ export default function ClientHome({ initialData }) {
     <>
       <Header data={safeData.config} />
       <main>
-        <Hero data={safeData.hero} />
+        <Hero data={safeData.hero} isHomePage={pageData?.id === 9} />
         <FeaturedOn data={safeData.featuredOn} />
         <ClinicVideo data={safeData.clinicVideo} />
         <Results data={safeData.results} />

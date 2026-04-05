@@ -32,14 +32,16 @@ add_filter( 'rest_pre_serve_request', function( $value ) {
 });
 
 /**
- * Helper: Resolve Image ID to full URL
+ * Helper: Resolve Field ID/Object/URL to full URL
+ * Works for both images and general files (videos)
  */
 function eugenix_resolve_image_url( $id ) {
     if ( empty( $id ) ) return '';
     if ( is_array( $id ) && isset( $id['url'] ) ) return $id['url']; // If ACF returns object
     if ( is_string( $id ) && filter_var( $id, FILTER_VALIDATE_URL ) ) return $id; // If already a URL
     
-    $url = wp_get_attachment_image_url( $id, 'full' );
+    // If it's an ID, get the direct URL (works for any attachment type including videos)
+    $url = wp_get_attachment_url( $id );
     return $url ? $url : '';
 }
 
@@ -391,6 +393,7 @@ function eugenix_get_landing_page_data( WP_REST_Request $request ) {
     
     // Final Payload
     $response_data = array(
+        'id'               => $post_id,
         'config'           => $config,
         'hero'             => $hero,
         'stats'            => $stats,

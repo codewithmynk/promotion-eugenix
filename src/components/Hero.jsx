@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import Slider from 'react-slick';
 
-const Hero = ({ data }) => {
+const Hero = ({ data, isHomePage }) => {
     if (!data || (!data.title && !data.subtitle && !data.image)) return null;
     
     // Strict mapping to PHP API (eugenix-headless-api.php)
@@ -23,22 +22,9 @@ const Hero = ({ data }) => {
         }
     }
 
-    // Default slick settings matching WP theme main.js
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        arrows: false,
-        fade: true
-    };
-
     return (
-        <section id="homeBanner" className="home-banner">
-            <Slider {...settings} className="hero-slider">
+        <section id="homeBanner" className="home-banner shadow-none">
+            <div className="hero-slider">
                 <div className="items">
                     <div className="container relative h-100">
                         <div className="hero-inner d-flex v-center relative">
@@ -63,7 +49,7 @@ const Hero = ({ data }) => {
                                     )}
                                     {buttonLabel && (
                                         <div className="btnbox d-flex wow fadeInLeft" data-wow-delay="0.4s">
-                                            <a className="btn white-btn big ml-auto" href={buttonLink}>
+                                            <a className={`btn white-btn big ${isHomePage ? 'ml-auto' : ''}`} href={buttonLink}>
                                                 <span>
                                                     <span dangerouslySetInnerHTML={{ __html: buttonLabel }} /> 
                                                     <i className="las la-arrow-right"></i>
@@ -99,7 +85,7 @@ const Hero = ({ data }) => {
                     <div className="shape_star"></div>
                     <div className="shape_only bounce-y"></div>
                 </div>
-            </Slider>
+            </div>
             <a id="arrow-next" className="scroll-sign" href="#clinicVideo">Scroll Down</a>
         </section>
     );

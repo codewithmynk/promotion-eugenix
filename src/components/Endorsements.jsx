@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
+import { useInView } from 'framer-motion';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const PrevArrow = (props) => {
@@ -23,6 +24,10 @@ const NextArrow = (props) => {
 };
 
 const Endorsements = ({ data }) => {
+    const sectionRef = useRef(null);
+    const sliderRef = useRef(null);
+    const isInView = useInView(sectionRef, { amount: 0.1 });
+
     if (!data) return null;
 
     // Live API: section_title + gallery[]; new schema: sectionTitle + items[]
@@ -49,7 +54,7 @@ const Endorsements = ({ data }) => {
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
         speed: 300,
-        autoplay: true,
+        autoplay: isInView,
         autoplaySpeed: 3000,
         slidesToShow: Math.max(1, currentSlidesToShow),
         slidesToScroll: 1,
@@ -72,7 +77,7 @@ const Endorsements = ({ data }) => {
     if (!mounted) return null;
 
     return (
-        <section className="endorsement-section media-section ptb-60">
+        <section className="endorsement-section media-section ptb-60" ref={sectionRef}>
             <div className="container">
                 {title && (
                     <div className="block-title text-center mb-5 wow fadeInUp" data-wow-delay="0.2s">
@@ -80,7 +85,7 @@ const Endorsements = ({ data }) => {
                     </div>
                 )}
                 
-                <Slider {...settings} className="media-list media-slider wow fadeInUp" data-wow-delay="0.3s">
+                <Slider {...settings} className="endorsement-list media-slider wow fadeInUp" data-wow-delay="0.3s" ref={sliderRef} key={`${defaultSlidesToShow}-${isInView}`}>
                     {items.map((item, index) => (
                         <div key={index} className="items px-3">
                             <div className="card-media crad-endors">

@@ -10,6 +10,8 @@ const Services = ({ data }) => {
 
     const [nav1, setNav1] = useState(null);
     const [nav2, setNav2] = useState(null);
+    const sliderRef1 = useRef(null);
+    const sliderRef2 = useRef(null);
 
     const { mounted, slidesToShow } = useResponsiveSlider(
         [
@@ -19,6 +21,13 @@ const Services = ({ data }) => {
         ],
         6
     );
+
+    useEffect(() => {
+        if (mounted) {
+            setNav1(sliderRef1.current);
+            setNav2(sliderRef2.current);
+        }
+    }, [mounted]);
 
     const navSettings = {
         slidesToShow: Math.max(1, slidesToShow || 6),
@@ -57,13 +66,13 @@ const Services = ({ data }) => {
         <section className="service-section">
             <div className="block-title text-center bg-white ptb-40 mb-0 wow fadeInUp" data-wow-delay="0.2s">
                 <div className="container">
-                    <h2 dangerouslySetInnerHTML={{ __html: sectionTitle }} />
+                    <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: sectionTitle }} />
                 </div>
             </div>
 
             <div className="service-tab-block relative wow fadeInUp" data-wow-delay="0.3s">
                 <div className="container">
-                    <Slider key={slidesToShow} asNavFor={nav2 || undefined} ref={setNav1} {...navSettings} className="service-list-tab row serv-slider-nav">
+                    <Slider asNavFor={nav2 || undefined} ref={sliderRef1} {...navSettings} className="service-list-tab row serv-slider-nav">
                         {SERVICES_DATA.map((service, index) => (
                             <div key={index} className="items">
                                 <div className="card-serv-icon">
@@ -80,7 +89,7 @@ const Services = ({ data }) => {
 
             <div className="serv-tab-main relative ptb-40 wow fadeInUp" data-wow-delay="0.4s">
                 <div className="container relative">
-                    <Slider key={slidesToShow} asNavFor={nav1 || undefined} ref={setNav2} {...contentSettings} className="serv-slider-for">
+                    <Slider asNavFor={nav1 || undefined} ref={sliderRef2} {...contentSettings} className="serv-slider-for">
                         {SERVICES_DATA.map((service, index) => (
                             <div key={index} className="items">
                                 <div className="serv-tab-content entry-content ptb-20 pt-0">

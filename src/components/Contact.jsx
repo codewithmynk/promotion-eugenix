@@ -59,7 +59,7 @@ const Contact = React.memo(({ data, config }) => {
                             <div className="social-media d-flex v-center">
                                 {socialMedia.map((sm, index) => (
                                     <a key={index} href={sm.link} target="_blank" rel="noopener noreferrer">
-                                        <i className={`lab la-${sm.label}`}></i>
+                                        <i className={`lab la-${sm.label?.toLowerCase()}`}></i>
                                     </a>
                                 ))}
                             </div>

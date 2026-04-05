@@ -30,7 +30,7 @@ const HairLossSolution = ({ data }) => {
                 <div className="container relative">
                     {title && (
                         <div className="block-title text-center ptb-20 pt-0 wow fadeInUp" data-wow-delay="0.2s">
-                            <h2 className="text-white">{title}</h2>
+                            <h2 className="text-white mb-0">{title}</h2>
                         </div>
                     )}
                     

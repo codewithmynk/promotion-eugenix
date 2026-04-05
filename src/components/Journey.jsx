@@ -1,10 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
+import { useInView } from 'framer-motion';
 import { useResponsiveSlider } from '../hooks/useResponsiveSlider';
 
 const Journey = ({ data }) => {
+    const sectionRef = useRef(null);
+    const sliderRef = useRef(null);
+    const isInView = useInView(sectionRef, { amount: 0.1 });
+
     if (!data || !data.items || data.items.length === 0) return null;
 
     const breakpoints = [
@@ -20,7 +25,7 @@ const Journey = ({ data }) => {
         infinite: true,
         dots: true,
         arrows: false,
-        autoplay: true,
+        autoplay: isInView,
         autoplaySpeed: 3000,
         slidesToShow: Math.max(1, slidesToShow || 4),
         slidesToScroll: 1,
@@ -33,14 +38,14 @@ const Journey = ({ data }) => {
     if (!mounted) return null;
 
     return (
-        <section className="journey-section ptb-60 bg-light">
+        <section className="journey-section ptb-60 bg4" ref={sectionRef}>
             <div className="container relative">
                 <div className="block-title text-center mb-40 wow fadeInUp">
-                    <h2 dangerouslySetInnerHTML={{ __html: data.sectionTitle || "Your Journey to Success" }} />
+                    <div className="small-title text-uppercase mb-0" dangerouslySetInnerHTML={{ __html: data.sectionTitle || "Your Journey to Success" }} />
                 </div>
 
                 <div className="journey-slider-wrapper relative">
-                    <Slider {...settings} className="journey-slider wow fadeInUp" data-wow-delay="0.3s">
+                    <Slider {...settings} className="journey-slider wow fadeInUp" data-wow-delay="0.3s" ref={sliderRef} key={`${slidesToShow}-${isInView}`}>
                         {data.items.map((item, index) => (
                             <div key={index} className="px-3">
                                 <div className="journey-card text-center shadow-hover p-20 bg-white" style={{ borderRadius: '15px', height: '100%' }}>

@@ -1,4 +1,5 @@
 {
+  "id": 9,
   "config": {
     "headerLogo": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2023/06/sitelogo.png",
     "topBarText": false,
@@ -23,6 +24,7 @@
     "image": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2023/06/banner-image.png"
   },
   "stats": {
+    "sectionTitle": null,
     "backgroundImage": "https://promotion.eugenixhairsciences.com/bhubaneswar/wp-content/uploads/2023/06/funfact-img.jpg",
     "items": [
       {
@@ -179,6 +181,7 @@
   },
   "services": {
     "sectionTitle": "Hair Transplant & Restoration Services",
+    "buttonLabel": null,
     "items": [
       {
         "title": "Hair Transplant In Male",
@@ -424,5 +427,24 @@
     "email": "info@eugenix.in",
     "workingHours": "Mon-Sun: 09:00 AM TO 09:00 PM",
     "mapIframeLink": "\u003Ciframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3771.095302624525!2d72.833065!3d19.059547!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c91613ec0001%3A0xa2f258def56c897f!2sEugenix%20Hair%20Sciences!5e0!3m2!1sen!2sin!4v1686207204332!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"\u003E\u003C/iframe\u003E"
+  },
+  "reviewsGoogle": {
+    "sectionTitle": null,
+    "reviewScript": null
+  },
+  "journey": {
+    "sectionTitle": "",
+    "items": []
+  },
+  "india": {
+    "sectionTitle": "",
+    "items": []
+  },
+  "ideal": {
+    "sectionTitle": "",
+    "description": "",
+    "image": "",
+    "buttonLabel": "",
+    "buttonLink": ""
   }
 }

@@ -5391,7 +5391,7 @@ section *:last-child {
 .hero-caption {
 	position: relative;
 	z-index: 3;
-	max-width: 520px;
+	max-width: 520px !important;
 }
 
 .hero-caption .h1 {
@@ -7433,7 +7433,7 @@ iframe.iframe-embed.alignright {
 
 /*Faq Section*/
 .faq-section .container {
-	max-width: 940px;
+	max-width: 940px !important;
 }
 
 .faq-list {
@@ -7849,8 +7849,8 @@ iframe.iframe-embed.alignright {
 	padding-bottom: 15px;
 }
 
-.google-review-section {
-	background: #f7f7f7;
+.testimonial-section .google-review-section {
+	background: #f7f7f7 !important;
 }
 
 .parallelogram_shape {
@@ -8276,6 +8276,10 @@ iframe.iframe-embed.alignright {
 }
 
 .faq-section .small-title {
+	font-size: 26px;
+}
+
+.google-reviews-section .small-title {
 	font-size: 26px;
 }
 
